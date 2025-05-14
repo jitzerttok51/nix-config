@@ -19,6 +19,7 @@
     isNormalUser = true;
     home = "/home/vmtest";
     extraGroups = [ "wheel" ];
+    hashedPassword = "$6$O8dxVaB.wkZD4VSy$PqSkgKQunLVqiWXXMk39EwKzZqHBAtQ0mlag.Haj3LqTCrITF2oJMLxnDw7YDkDd7D7Ztvc2Zg95ziX553xMn1";
   };
 
   environment.systemPackages = with pkgs; [
