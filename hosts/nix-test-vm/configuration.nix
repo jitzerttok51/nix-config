@@ -48,10 +48,20 @@
   # services.displayManager.lightdm.enable = true;
   # services.desktopManager.cinnamon.enable = true;
 
+  # services.xserver = {
+  #   enable = true;
+  #   desktopManager.pantheon.enable = true;
+  # };
+
   services.xserver = {
-    enable = true;
-    desktopManager.pantheon.enable = true;
-  };
+		enable = true;
+		libinput.enable = true;
+		displayManager.lightdm.enable = true;
+		desktopManager = {
+			cinnamon.enable = true;
+		};
+		displayManager.defaultSession = "cinnamon";
+	};
 
   services.openssh = {
     enable = true;
