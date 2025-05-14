@@ -19,6 +19,19 @@
     unzip
     git
     chromium
+    obsidian
+    thunderbird
+    jetbrains.idea-community
+    zulu17
+    eclipse
+    vscode
+    qbittorrent
+    libreoffice
+    caprine
+    viber
+    xiphos
+    mpv
+    ffmpeg
   ];
 
   services.openssh = {
