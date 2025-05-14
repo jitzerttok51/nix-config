@@ -23,7 +23,7 @@
     thunderbird
     jetbrains.idea-community
     zulu17
-    eclipse
+    eclipses.eclipse-jee
     vscode
     qbittorrent
     libreoffice
