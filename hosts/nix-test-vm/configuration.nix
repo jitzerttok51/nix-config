@@ -18,6 +18,7 @@
     zip
     unzip
     git
+    chromium
   ];
 
   services.openssh = {
