@@ -9,6 +9,7 @@
       ./hardware-configuration.nix
   ];
 
+  networking.hostName = "mix-test-vm";
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; 
   time.timeZone = "Europe/Sofia";
