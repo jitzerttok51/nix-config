@@ -44,9 +44,14 @@
   # services.displayManager.sddm.enable = true;
   # services.desktopManager.plasma6.enable = true;
 
-  services.xserver.enable = true;
-  services.displayManager.lightdm.enable = true;
-  services.desktopManager.cinnamon.enable = true;
+  # services.xserver.enable = true;
+  # services.displayManager.lightdm.enable = true;
+  # services.desktopManager.cinnamon.enable = true;
+
+  services.xserver = {
+    enable = true;
+    desktopManager.pantheon.enable = true;
+  };
 
   services.openssh = {
     enable = true;
