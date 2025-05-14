@@ -32,13 +32,17 @@
     git
   ];
 
-  services.xserver = {
-    enable = true;
-    desktopManager = {
-      xfce.enable = true;
-    };
-    displayManager.defaultSession = "xfce";
-  };
+  # services.xserver = {
+  #   enable = true;
+  #   desktopManager = {
+  #     xfce.enable = true;
+  #   };
+  #   displayManager.defaultSession = "xfce";
+  # };
+
+  services.xserver.enable = true;
+  services.displayManager.sddm.enable = true;
+  services.desktopManager.plasma6.enable = true;
 
   services.openssh = {
     enable = true;
