@@ -7,7 +7,7 @@
       ../../modules/desktops/cinnamon.nix
   ];
 
-  networking.hostName = "mix-test-vm";
+  networking.hostName = "nix-test-vm";
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda"; 
   time.timeZone = "Europe/Sofia";
