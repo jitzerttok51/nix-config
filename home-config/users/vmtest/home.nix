@@ -23,6 +23,7 @@
     zulu17
     neofetch
     bat
+    dconf-editor
   ];
 
   home.sessionVariables = {
