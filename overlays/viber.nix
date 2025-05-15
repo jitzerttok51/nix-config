@@ -6,5 +6,6 @@ final: prev: {
       substituteInPlace $out/share/applications/viber.desktop \
         --replace /opt/viber/ $out/opt/viber/ \
     '';
+    postPhases = "postInstall";
   });
 }
