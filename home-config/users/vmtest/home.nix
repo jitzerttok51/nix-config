@@ -52,7 +52,6 @@
       plugins = [
         "git"
         "history"
-        "zsh-bat"
       ];
     };
     initExtra = ''
