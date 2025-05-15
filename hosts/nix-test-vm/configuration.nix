@@ -15,6 +15,10 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  nixpkgs.overlays = [
+    ../../overlays/viber.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     vim
     zip
