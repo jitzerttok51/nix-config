@@ -49,25 +49,14 @@
   };
 
   dconf.settings = {
-    "org/cinnamon/desktop/input-sources" = {
-      sources = [
-                  (lib.hm.gvariant.mkTuple [ "xkb" "us" ]) # US English layout
-                  (lib.hm.gvariant.mkTuple [ "xkb" "bg" ]) # Example: Bulgarian layout
-                  # Add more layouts as needed
-                ];
-
-      xkb-options = [
-                      "grp:alt_shift_toggle" # Example: Switch layout with Alt+Shift
-                      "terminate:ctrl_alt_bksp" # Example: Enable Ctrl+Alt+Backspace to kill X server
-                      # Add more XKB options as needed
-                    ];
-
-      # You might also want to set 'current' to the index of the default layout (0-based)
-      # current = lib.mkIf (config.programs.xserver.enable or true) 0; # Set US as default
+    "org/gnome/libgnomekbd/keyboard" = {
+      layouts = ["us" "bg\\tphonetic"];
+      xkb-options = [ "grp\\tgrp:alt_shift_toggle" ];
     };
 
-    # You might need other dconf settings for Cinnamon,
-    # but input-sources is the primary one for layouts.
+    "org/cinnamon/desktop/interface" = {
+      keyboard-layout-use-upper = true;
+    };
   };
 
   programs.zsh = {
