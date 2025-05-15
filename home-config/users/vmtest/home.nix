@@ -35,6 +35,11 @@
 
   programs.home-manager.enable = true;
 
+  home.shellAliases = {
+    cat = "bat";
+    rcat = "cat";
+  }
+
   programs.zsh = {
     enable = true;
     # zsh-autoenv.enable = true;
