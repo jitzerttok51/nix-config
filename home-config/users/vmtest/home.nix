@@ -40,6 +40,13 @@
     rcat = "cat";
   };
 
+  home.keyboard = {
+    layout = "us, bg";
+    options = [
+      "grp:caps_toggle"
+    ]; 
+  };
+
   programs.zsh = {
     enable = true;
     # zsh-autoenv.enable = true;
