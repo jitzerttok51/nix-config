@@ -7,7 +7,7 @@
       ../../modules/desktops/cinnamon.nix
   ];
 
-  networking.hostName = "prodanov-pc";
+  networking.hostName = "nprodanov-pc";
 
   boot.loader = {
     systemd-boot.enable = true;
