@@ -12,6 +12,13 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
+    systemd-boot.edk2-uefi-shell.enable = true;
+    # systemd-boot.windows = {
+    #   "11" = {
+    #     title = "Windows 11";
+    #     efiDeviceHandle = "HD0b1";
+    #   };
+    # };
   };
 
   time.timeZone = "Europe/Sofia";
