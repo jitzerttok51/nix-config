@@ -21,7 +21,7 @@
     unzip
     git
     chromium
-    obsidian
+    # obsidian
     thunderbird
     jetbrains.idea-community
     zulu17
@@ -29,7 +29,8 @@
     vscode
     qbittorrent
     libreoffice
-    caprine
+    # caprine
+    caprine-bin
     viber
     xiphos
     mpv
