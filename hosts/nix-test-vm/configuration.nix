@@ -16,7 +16,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nixpkgs.overlays = [
-    ../../overlays/viber.nix
+    (import ../../overlays/viber.nix)
   ];
 
   environment.systemPackages = with pkgs; [

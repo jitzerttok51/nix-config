@@ -1,5 +1,5 @@
-self: super: {
-  viber = super.viber.overrideAttrs (oldAttrs: {
+final: prev: {
+  viber = prev.viber.overrideAttrs (oldAttrs: {
     postInstall = ''
       ${oldAttrs.postInstall or ""}
       echo "Patching viber.desktop file..."
