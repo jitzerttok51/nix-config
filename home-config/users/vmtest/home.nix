@@ -51,7 +51,7 @@
     # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.initContent
     initContent = (let 
       # zshConfigEarlyInit = lib.mkOrder 500 "do something"; 
-      zshConfig = home-manager.lib.mkOrder 1500 "neofetch"; 
+      zshConfig = lib.mkOrder 1500 "neofetch"; 
       in 
       lib.mkMerge [ zshConfigEarlyInit zshConfig ]);
 
