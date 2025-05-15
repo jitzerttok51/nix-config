@@ -51,7 +51,7 @@
   dconf.settings = {
     "org/gnome/libgnomekbd/keyboard" = {
       layouts = ["us" "bg\tphonetic"];
-      xkb-options = [ "grp\tgrp:alt_shift_toggle" ];
+      options = [ "grp\tgrp:alt_shift_toggle" ];
     };
 
     "org/cinnamon/desktop/interface" = {
