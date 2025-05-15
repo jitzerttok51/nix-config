@@ -4,7 +4,7 @@ final: prev: {
       ${oldAttrs.postInstall or ""}
       echo "Patching viber.desktop file..."
       substituteInPlace $out/share/applications/viber.desktop \
-        --replace /opt/viber/ $out/opt/viber/ \
+        --replace /opt/viber/ $out/opt/viber/
     '';
     postPhases = "postInstall";
   });
