@@ -49,15 +49,13 @@
 
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
-      sources = lib.mkIf (config.programs.xserver.enable or true) # Apply only if X server is enabled
-                [
+      sources = [
                   (lib.hm.gvariant.mkTuple [ "xkb" "us" ]) # US English layout
                   (lib.hm.gvariant.mkTuple [ "xkb" "bg" ]) # Example: Bulgarian layout
                   # Add more layouts as needed
                 ];
 
-      xkb-options = lib.mkIf (config.programs.xserver.enable or true) # Apply only if X server is enabled
-                    [
+      xkb-options = [
                       "grp:alt_shift_toggle" # Example: Switch layout with Alt+Shift
                       "terminate:ctrl_alt_bksp" # Example: Enable Ctrl+Alt+Backspace to kill X server
                       # Add more XKB options as needed
