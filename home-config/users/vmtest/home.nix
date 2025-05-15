@@ -35,9 +35,9 @@
 
   programs.zsh = {
     enable = true;
-    zsh-autoenv.enable = true;
-    enableCompletions = true;
-    # autosuggestions.enable = true;
+    # zsh-autoenv.enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     ohMyZsh = {
       enable = true;
