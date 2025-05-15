@@ -53,7 +53,10 @@
       # zshConfigEarlyInit = lib.mkOrder 500 "do something"; 
       zshConfig = lib.mkOrder 1500 "neofetch"; 
       in 
-      lib.mkMerge [ zshConfigEarlyInit zshConfig ]);
+      lib.mkMerge [ 
+        # zshConfigEarlyInit 
+        zshConfig 
+      ]);
 
   };
 
