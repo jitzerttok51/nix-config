@@ -18,7 +18,7 @@
       homeConfigurations."vmtest" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = {
-          inherit home-manager;
+          lib = home-manager.lib;
         };
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
