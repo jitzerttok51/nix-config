@@ -39,6 +39,7 @@
     xiphos
     mpv
     ffmpeg
+    home-manager
   ];
 
   services.openssh = {
