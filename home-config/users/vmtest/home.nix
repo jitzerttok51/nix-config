@@ -22,6 +22,7 @@
     thunderbird
     zulu17
     neofetch
+    bat
   ];
 
   home.sessionVariables = {
@@ -46,6 +47,7 @@
       plugins = [
         "git"
         "history"
+        "zsh-bat"
       ];
     };
     initExtra = ''
