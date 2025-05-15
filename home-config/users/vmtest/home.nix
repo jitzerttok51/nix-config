@@ -38,7 +38,7 @@
   home.shellAliases = {
     cat = "bat";
     rcat = "cat";
-  }
+  };
 
   programs.zsh = {
     enable = true;
