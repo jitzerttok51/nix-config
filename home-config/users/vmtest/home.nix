@@ -43,8 +43,8 @@
       enable = true;
       theme = "robbyrussell";
       plugins = [
-        git
-        history
+        "git"
+        "history"
       ];
     };
   };
