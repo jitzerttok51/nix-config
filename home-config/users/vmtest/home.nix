@@ -48,7 +48,7 @@
   };
 
   dconf.settings = {
-    "org/gnome/desktop/input-sources" = {
+    "org/cinnamon/desktop/input-sources" = {
       sources = [
                   (lib.hm.gvariant.mkTuple [ "xkb" "us" ]) # US English layout
                   (lib.hm.gvariant.mkTuple [ "xkb" "bg" ]) # Example: Bulgarian layout
