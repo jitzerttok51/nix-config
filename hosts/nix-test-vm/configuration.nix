@@ -24,20 +24,6 @@
     zip
     unzip
     git
-    chromium
-    # obsidian
-    thunderbird
-    jetbrains.idea-community
-    zulu17
-    eclipses.eclipse-jee
-    vscode
-    qbittorrent
-    libreoffice
-    # caprine
-    caprine-bin
-    viber
-    xiphos
-    mpv
     ffmpeg
     home-manager
   ];
