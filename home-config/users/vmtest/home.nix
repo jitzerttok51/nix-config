@@ -4,6 +4,8 @@
   home.username = "vmtest";
   home.homeDirectory = "/home/vmtest";
 
+  nixpkgs.config.allowUnfree = true;
+
   home.packages = with pkgs; [
     jetbrains.idea-community
     eclipses.eclipse-jee
