@@ -50,7 +50,7 @@
     };
     initExtra = ''
         neofetch
-      ''
+      '';
     # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.initContent
     # initContent = (let 
     #   # zshConfigEarlyInit = lib.mkOrder 500 "do something"; 
