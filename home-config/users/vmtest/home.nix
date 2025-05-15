@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   home.username = "vmtest";
@@ -45,6 +45,30 @@
     options = [
       "grp:caps_toggle"
     ]; 
+  };
+
+  dconf.settings = {
+    "org/gnome/desktop/input-sources" = {
+      sources = lib.mkIf (config.programs.xserver.enable or true) # Apply only if X server is enabled
+                [
+                  (lib.hm.gvariant.mkTuple [ "xkb" "us" ]) # US English layout
+                  (lib.hm.gvariant.mkTuple [ "xkb" "bg" ]) # Example: Bulgarian layout
+                  # Add more layouts as needed
+                ];
+
+      xkb-options = lib.mkIf (config.programs.xserver.enable or true) # Apply only if X server is enabled
+                    [
+                      "grp:alt_shift_toggle" # Example: Switch layout with Alt+Shift
+                      "terminate:ctrl_alt_bksp" # Example: Enable Ctrl+Alt+Backspace to kill X server
+                      # Add more XKB options as needed
+                    ];
+
+      # You might also want to set 'current' to the index of the default layout (0-based)
+      # current = lib.mkIf (config.programs.xserver.enable or true) 0; # Set US as default
+    };
+
+    # You might need other dconf settings for Cinnamon,
+    # but input-sources is the primary one for layouts.
   };
 
   programs.zsh = {
