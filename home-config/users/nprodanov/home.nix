@@ -15,13 +15,14 @@
     # jetbrains.idea-community
     # eclipses.eclipse-jee
     vscode
+    yt-dlp
     # qbittorrent
     # libreoffice
     # caprine
     # caprine-bin
     # viber
     # xiphos
-    # mpv
+    mpv
     # chromium
     # obsidian
     # thunderbird
