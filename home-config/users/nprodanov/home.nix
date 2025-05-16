@@ -25,6 +25,7 @@
     # viber
     # xiphos
     mpv
+    wofi
     # chromium
     # obsidian
     # thunderbird

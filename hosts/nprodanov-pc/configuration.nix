@@ -9,6 +9,14 @@
 
   programs.hyprland.enable = true;
   programs.hyprland.package = hyprland.packages."${pkgs.system}".hyprland;
+  programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+       pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   networking.hostName = "nprodanov-pc";
 
@@ -43,7 +51,6 @@
     git
     ffmpeg
     home-manager
-    chromium 
     kitty
   ];
 
