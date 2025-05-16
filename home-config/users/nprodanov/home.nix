@@ -17,22 +17,22 @@
   nixpkgs.config.allowUnfree = true;
 
   home.packages = with pkgs; [
-    # jetbrains.idea-community
-    # eclipses.eclipse-jee
+    jetbrains.idea-community
+    eclipses.eclipse-jee
     vscode
     yt-dlp
     nixfmt
-    # qbittorrent
-    # libreoffice
+    qbittorrent
+    libreoffice
     # caprine
-    # caprine-bin
+    caprine-bin
     # viber
-    # xiphos
+    xiphos
     mpv
     wofi
     # chromium
     # obsidian
-    # thunderbird
+    thunderbird
     zulu17
     neofetch
     bat
