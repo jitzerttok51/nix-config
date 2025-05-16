@@ -15,7 +15,7 @@
       enableExtensionUpdateCheck = false;
       userSettings = {
         "workbench.colorTheme" = "Dracula Theme";
-        "window.zoomLevel" = 1.5; 
+        # "window.zoomLevel" = 1.5; 
       };
 
       extensions = with pkgs.vscode-marketplace; [
