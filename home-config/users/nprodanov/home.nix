@@ -1,9 +1,9 @@
 { config, pkgs, lib, nix-vscode-extensions, ... }:
 
 {
-  imports = [ 
+  imports = [
     ./vscode.nix
-    ../../../modules/desktop/hyprland.nix
+    ../../../modules/desktops/hyprland.nix
     # <plasma-manager/modules>
   ];
 
@@ -17,6 +17,7 @@
     # eclipses.eclipse-jee
     vscode
     yt-dlp
+    nixfmt
     # qbittorrent
     # libreoffice
     # caprine
@@ -33,13 +34,9 @@
     # dconf-editor
   ];
 
-  home.sessionVariables = {
-    EDITOR = "vim";
-  };
+  home.sessionVariables = { EDITOR = "vim"; };
 
-  nixpkgs.overlays = [
-    (import ../../../overlays/viber.nix)
-  ];
+  nixpkgs.overlays = [ (import ../../../overlays/viber.nix) ];
 
   programs.home-manager.enable = true;
 
@@ -50,23 +47,20 @@
 
   home.keyboard = {
     layout = "us, bg";
-    options = [
-      "grp:caps_toggle"
-    ]; 
+    options = [ "grp:caps_toggle" ];
   };
 
-/*
-  dconf.settings = {
-    "org/gnome/libgnomekbd/keyboard" = {
-      layouts = ["us" "bg\tphonetic"];
-      options = [ "grp\tgrp:alt_shift_toggle" ];
-    };
+  /* dconf.settings = {
+       "org/gnome/libgnomekbd/keyboard" = {
+         layouts = ["us" "bg\tphonetic"];
+         options = [ "grp\tgrp:alt_shift_toggle" ];
+       };
 
-    "org/cinnamon/desktop/interface" = {
-      keyboard-layout-use-upper = true;
-    };
-  };
-*/
+       "org/cinnamon/desktop/interface" = {
+         keyboard-layout-use-upper = true;
+       };
+     };
+  */
   programs.zsh = {
     enable = true;
     # zsh-autoenv.enable = true;
@@ -76,14 +70,11 @@
     oh-my-zsh = {
       enable = true;
       theme = "robbyrussell";
-      plugins = [
-        "git"
-        "history"
-      ];
+      plugins = [ "git" "history" ];
     };
     initExtra = ''
-        neofetch
-      '';
+      neofetch
+    '';
     # https://nix-community.github.io/home-manager/options.xhtml#opt-programs.zsh.initContent
     # initContent = (let 
     #   # zshConfigEarlyInit = lib.mkOrder 500 "do something"; 
@@ -112,9 +103,7 @@
     addKeysToAgent = "yes";
   };
 
-  programs.gpg = {
-    enable = true;
-  };
+  programs.gpg = { enable = true; };
 
   programs.plasma = {
     enable = true;
@@ -124,7 +113,8 @@
       lookAndFeel = "org.kde.breezedark.desktop";
       cursor.theme = "Breeze_Light";
       iconTheme = "Papirus-Dark";
-      wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+      wallpaper =
+        "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
     };
     hotkeys.commands."launch-konsole" = {
       name = "Launch Konsole";
@@ -141,12 +131,7 @@
       };
     };
     shortcuts = {
-      ksmserver = {
-        "Lock Session" = [
-          "Screensaver"
-          "Meta+Ctrl+Alt+L"
-        ];
-      };
+      ksmserver = { "Lock Session" = [ "Screensaver" "Meta+Ctrl+Alt+L" ]; };
 
       kwin = {
         "Expose" = "Meta+,";
