@@ -3,6 +3,7 @@
 {
   imports = [ 
     ./vscode.nix
+    ../../../modules/desktop/hyprland.nix
     # <plasma-manager/modules>
   ];
 

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, hyprland, ... }:
 
 {
   imports = [ 
@@ -6,6 +6,9 @@
       ../../modules/users/nprodanov.nix
       ../../modules/desktops/plasma6.nix
   ];
+
+  programs.hyprland.enable = true;
+  programs.hyprland.package = hyprland.packages."${pkgs.system}".hyprland;
 
   networking.hostName = "nprodanov-pc";
 
@@ -22,7 +25,12 @@
   };
 
   time.timeZone = "Europe/Sofia";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    substituters = ["https://hyprland.cachix.org"];
+    trusted-substituters = ["https://hyprland.cachix.org"];
+    trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
+  };
 
   networking.networkmanager.enable = true;
 
@@ -36,6 +44,7 @@
     ffmpeg
     home-manager
     chromium 
+    kitty
   ];
 
 #  services.openssh = {
