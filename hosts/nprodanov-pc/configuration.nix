@@ -4,7 +4,7 @@
   imports = [ 
       ./hardware-configuration.nix
       ../../modules/users/nprodanov.nix
-      ../../modules/desktops/cinnamon.nix
+      ../../modules/desktops/plasma6.nix
   ];
 
   networking.hostName = "nprodanov-pc";
@@ -13,16 +13,18 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
     systemd-boot.edk2-uefi-shell.enable = true;
-    # systemd-boot.windows = {
-    #   "11" = {
-    #     title = "Windows 11";
-    #     efiDeviceHandle = "HD0b1";
-    #   };
-    # };
+    systemd-boot.windows = {
+      "11" = {
+        title = "Windows 11";
+        efiDeviceHandle = "HD0b";
+      };
+    };
   };
 
   time.timeZone = "Europe/Sofia";
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  networking.networkmanager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -36,15 +38,15 @@
     chromium 
   ];
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-    };
-  };
+#  services.openssh = {
+#    enable = true;
+#    settings = {
+#      PasswordAuthentication = true;
+#    };
+#  };
 
-  virtualisation.virtualbox.host.enable = true;
-  users.extraGroups.vboxusers.members = [ "vmtest" ];
+#  virtualisation.virtualbox.host.enable = true;
+#  users.extraGroups.vboxusers.members = [ "vmtest" ];
 
   system.stateVersion = "24.11"; 
 }
