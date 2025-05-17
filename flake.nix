@@ -15,6 +15,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     layan-plasma.url = ./packages/layan-plasma;
+    mc-sur-plasma.url = ./packages/layan-plasma;
   };
 
   outputs = { 
@@ -25,6 +26,7 @@
     nix-vscode-extensions,
     plasma-manager,
     layan-plasma,
+    mc-sur-plasma,
     ... }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -61,10 +63,11 @@
           hyprland
           plasma-manager;
           layan-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
-          # layanPlasma = self.packages."x86_64-linux".layan-plasma;
+          mc-sur-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
       };
 
       modules = [
+        mc-sur-plasma.homeManagerModules.mc-sur-plasma
         layan-plasma.homeManagerModules.layan-plasma
         plasma-manager.homeManagerModules.plasma-manager
         ./home-config/users/nprodanov/home.nix 
