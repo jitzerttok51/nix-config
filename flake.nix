@@ -60,6 +60,7 @@
           home-manager 
           hyprland
           plasma-manager;
+          layanPlasma = self.packages."x86_64-linux".layan-plasma;
       };
 
       modules = [
