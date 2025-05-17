@@ -4,15 +4,12 @@
   pname = "layan-plasma";
   version = "2025-02-13";
 
-  srcs = [
-    (fetchFromGitHub {
-      owner = "vinceliuice";
-      repo = "Layan-kde";
-      rev = "2025-02-13";
-      sha256 = "sha256-T69bGjfZeOsJLmOZKps9N2wMv5VKYeo1ipGEsLAS+Sg="; # Call first time to get hash
-    })
-    ./module.nix
-  ];
+  src = fetchFromGitHub {
+    owner = "vinceliuice";
+    repo = "Layan-kde";
+    rev = "2025-02-13";
+    sha256 = "sha256-T69bGjfZeOsJLmOZKps9N2wMv5VKYeo1ipGEsLAS+Sg="; # Call first time to get hash
+  };
 
   installPhase = ''
     mkdir -p $out/.local/share
@@ -20,8 +17,7 @@
     unset name
     bash -x install.sh
     mv $out/.local/* $out/
-    rm -rf .local
-    cp module.nix $out/
+    rm -rf $out/.local
   '';
 
   meta = with lib; {

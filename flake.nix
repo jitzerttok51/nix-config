@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    layan-plasma.url = ./packages/layan-plasma;
   };
 
   outputs = { 
@@ -64,6 +65,7 @@
       };
 
       modules = [
+        "${self.packages."x86_64-linux".layan-plasma}/module.nix"
         plasma-manager.homeManagerModules.plasma-manager
         ./home-config/users/nprodanov/home.nix 
       ];
