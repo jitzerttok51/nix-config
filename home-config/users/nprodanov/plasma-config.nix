@@ -1,14 +1,18 @@
 { config, pkgs, ...}: {
     programs.plasma = {
     enable = true;
+    overrideConfig = true;
     workspace = {
-      theme = "breeze-dark";
+      colorScheme = "Layan";
+      windowDecorations.library="org.kde.kwin.aurorae";
+      windowDecorations.theme="__aurorae__svg__McSur-dark";
+      splashScreen.theme = "Noir-Splash-6";
+      theme = "McMojave";
       clickItemTo = "select";
-      lookAndFeel = "org.kde.breezedark.desktop";
-      cursor.theme = "Breeze_Light";
+      cursor.theme = "Breeze_Light"; # WinSur-dark-cursors
       iconTheme = "Papirus-Dark";
       wallpaper =
-        "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Patak/contents/images/1080x1920.png";
+        "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/";
     };
     hotkeys.commands."launch-konsole" = {
       name = "Launch Konsole";
@@ -17,7 +21,8 @@
     };
     configFile = {
       "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
-      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "SF";
+      "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "";
+      "kwinrc"."org.kde.kdecoration2"."ButtonsOnRight" = "IAX";
       "kwinrc"."Desktops"."Number" = {
         value = 8;
         # Forces kde to not change this value (even through the settings app).
@@ -40,18 +45,21 @@
       {
         location = "bottom";
         widgets = [
-          "org.kde.plasma.kickoff"
           "org.kde.plasma.icontasks"
-          "org.kde.plasma.marginsseparator"
-          "org.kde.plasma.systemtray"
-          "org.kde.plasma.digitalclock"
         ];
       }
       # Global menu at the top
       {
         location = "top";
         height = 26;
-        widgets = [ "org.kde.plasma.appmenu" ];
+        floating = true;
+        widgets = [
+          "org.kde.plasma.kickoff"
+          "org.kde.plasma.appmenu"
+          "org.kde.plasma.panelspacer"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+        ];
       }
     ];
   };
