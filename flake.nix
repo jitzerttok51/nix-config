@@ -24,10 +24,9 @@
     home-manager,
     nix-vscode-extensions,
     plasma-manager,
+    layan-plasma,
     ... }@inputs: {
 
-    packages."x86_64-linux".layan-plasma = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/layan-plasma {};
-    
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit home-manager; };
@@ -61,11 +60,12 @@
           home-manager 
           hyprland
           plasma-manager;
-          layanPlasma = self.packages."x86_64-linux".layan-plasma;
+          layan-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
+          # layanPlasma = self.packages."x86_64-linux".layan-plasma;
       };
 
       modules = [
-        "${self.packages."x86_64-linux".layan-plasma}/module.nix"
+        layan-plasma.homeManagerModules.layan-plasma
         plasma-manager.homeManagerModules.plasma-manager
         ./home-config/users/nprodanov/home.nix 
       ];

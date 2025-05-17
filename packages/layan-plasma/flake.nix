@@ -7,8 +7,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
-    packages."x86_64-linux".layan-plasma = nixpkgs.legacyPackages."x86_64-linux".callPackage ./files {};
+  outputs = { self, nixpkgs, home-manager, ... }:
+  let 
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+  in  {
+    packages.${system}.layan-plasma = pkgs.callPackage ./files {};
     homeManagerModules.layan-plasma = { ... }: {
       imports = [ ./module.nix ];
     };

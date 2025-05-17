@@ -1,7 +1,4 @@
 { config, pkgs, layanPlasma, ...}: {
-    home.packages = [
-      layanPlasma
-    ];
     programs.plasma = {
     enable = true;
     overrideConfig = true;
