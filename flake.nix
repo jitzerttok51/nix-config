@@ -24,6 +24,8 @@
     nix-vscode-extensions,
     plasma-manager,
     ... }@inputs: {
+
+    packages."x86_64-linux".layan-plasma = nixpkgs.legacyPackages."x86_64-linux".callPackage ./packages/layan-plasma {};
     
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
