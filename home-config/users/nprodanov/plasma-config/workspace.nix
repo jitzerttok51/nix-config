@@ -1,7 +1,6 @@
 { config, pkgs, ...}: {
     programs.plasma = {
-    enable = true;
-    overrideConfig = true;
+
     workspace = {
       colorScheme = "Layan";
       windowDecorations.library="org.kde.kwin.aurorae";
@@ -13,6 +12,14 @@
       iconTheme = "Papirus-Dark";
       wallpaper =
         "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/";
+    };
+
+    configFile = {
+      kwinrc = {
+        "org.kde.kdecoration2"."ButtonsOnLeft" = "";
+        "org.kde.kdecoration2"."ButtonsOnRight" = "IAX";
+        "Windows"."BorderlessMaximizedWindows" = true;
+      };
     };
   };
 }

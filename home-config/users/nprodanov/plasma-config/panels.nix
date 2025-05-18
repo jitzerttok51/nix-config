@@ -14,10 +14,6 @@
               General = {
                 launchers = [
                   "applications:systemsettings.desktop"
-                  "applications:org.kde.dolphin.desktop"
-                  "applications:org.kde.konsole.desktop"
-                  "preferred://filemanager"
-                  "preferred://browser"
                   "file://${pkgs.vscode}/share/applications/code.desktop"
                 ];
               };
@@ -37,6 +33,22 @@
               General = {
                 icon = "nix-snowflake-white";
                 alphaSort = true;
+              };
+            };
+          }
+          {
+            name = "com.github.antroids.application-title-bar";
+            config = {
+              ConfigDialog = {
+                DialogHeight = 540;
+                DialogWidth = 720;
+              };
+              Appearance = {
+                widgetButtonsAuroraeTheme = "McSur-light";
+                widgetButtonsIconsTheme = "Oxygen";
+                widgetElements = "windowTitle";
+                windowTitleFontBold = false;
+                windowTitleMarginsLeft = 20;
               };
             };
           }
