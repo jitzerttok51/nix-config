@@ -5,6 +5,7 @@ let
   fileManager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
   browser = "${pkgs.chromium}/bin/chromium --ozone-platform-hint=auto";
 in {
+  # TODO: Fix chrome and vscode font rendering
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
