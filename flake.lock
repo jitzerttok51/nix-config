@@ -130,6 +130,27 @@
         "type": "github"
       }
     },
+    "home-manager_3": {
+      "inputs": {
+        "nixpkgs": [
+          "mc-sur-plasma",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1747439237,
+        "narHash": "sha256-5rCGrnkglKKj4cav1U3HC+SIUNJh08pqOK4spQv9RjA=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "ae755329092c87369b9e9a1510a8cf1ce2b1c708",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "hyprcursor": {
       "inputs": {
         "hyprlang": [
@@ -404,10 +425,25 @@
       },
       "parent": []
     },
+    "mc-sur-plasma": {
+      "inputs": {
+        "home-manager": "home-manager_3",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "path": "packages/mc-sur-plasma",
+        "type": "path"
+      },
+      "original": {
+        "path": "packages/mc-sur-plasma",
+        "type": "path"
+      },
+      "parent": []
+    },
     "nix-vscode-extensions": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs_3"
+        "nixpkgs": "nixpkgs_4"
       },
       "locked": {
         "lastModified": 1747383427,
@@ -457,6 +493,22 @@
     },
     "nixpkgs_3": {
       "locked": {
+        "lastModified": 1747327360,
+        "narHash": "sha256-LSmTbiq/nqZR9B2t4MRnWG7cb0KVNU70dB7RT4+wYK4=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "e06158e58f3adee28b139e9c2bcfcc41f8625b46",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_4": {
+      "locked": {
         "lastModified": 1744868846,
         "narHash": "sha256-5RJTdUHDmj12Qsv7XOhuospjAjATNiTMElplWnJE9Hs=",
         "owner": "NixOS",
@@ -471,7 +523,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
+    "nixpkgs_5": {
       "locked": {
         "lastModified": 1747179050,
         "narHash": "sha256-qhFMmDkeJX9KJwr5H32f1r7Prs7XbQWtO0h3V0a0rFY=",
@@ -538,8 +590,9 @@
         "home-manager": "home-manager",
         "hyprland": "hyprland",
         "layan-plasma": "layan-plasma",
+        "mc-sur-plasma": "mc-sur-plasma",
         "nix-vscode-extensions": "nix-vscode-extensions",
-        "nixpkgs": "nixpkgs_4",
+        "nixpkgs": "nixpkgs_5",
         "plasma-manager": "plasma-manager"
       }
     },

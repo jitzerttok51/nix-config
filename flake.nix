@@ -15,7 +15,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     layan-plasma.url = ./packages/layan-plasma;
-    mc-sur-plasma.url = ./packages/layan-plasma;
+    mc-sur-plasma.url = ./packages/mc-sur-plasma;
   };
 
   outputs = { 
@@ -63,7 +63,7 @@
           hyprland
           plasma-manager;
           layan-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
-          mc-sur-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
+          mc-sur-plasma = mc-sur-plasma.packages."x86_64-linux".mc-sur-plasma;
       };
 
       modules = [
