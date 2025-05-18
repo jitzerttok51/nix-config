@@ -3,7 +3,7 @@
 {
   imports = [
     ./vscode.nix
-    ./plasma-config.nix
+    ./plasma-config
     ./shell.nix
     ./git.nix
     ../../../modules/desktops/hyprland.nix
