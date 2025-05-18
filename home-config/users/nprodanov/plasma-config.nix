@@ -48,6 +48,7 @@
         # extraSettings = "";
         height = 64;
         lengthMode = "fit";
+        hiding = "dodgewindows";
         widgets = [
           "org.kde.plasma.icontasks"
         ];
