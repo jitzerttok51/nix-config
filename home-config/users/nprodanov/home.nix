@@ -1,4 +1,4 @@
-{ config, pkgs, lib, nix-vscode-extensions, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -27,17 +27,17 @@
     meld
     # caprine
     caprine-bin
-    # viber
-    xiphos
+    # viber TODO: Figure out how to install it
+    xiphos # TODO: Might use another bible app
     mpv
-    wofi
+    wofi # TODO: Add it to hyprland specific confg
     # chromium
     # obsidian
     thunderbird
     zulu17
     neofetch
     bat
-    # dconf-editor
+    # dconf-editor # TODO: Add to cinnamon
   ];
 
   home.sessionVariables = { EDITOR = "vim"; };
@@ -49,11 +49,7 @@
     rcat = "cat";
   };
 
-  home.keyboard = {
-    layout = "us, bg";
-    options = [ "grp:caps_toggle" ];
-  };
-
+  # TODO: Move in another file for cinnamon
   dconf.settings = {
        "org/gnome/libgnomekbd/keyboard" = {
          layouts = ["us" "bg\tphonetic"];
