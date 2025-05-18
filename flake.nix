@@ -16,6 +16,7 @@
     };
     layan-plasma.url = ./packages/layan-plasma;
     mc-sur-plasma.url = ./packages/mc-sur-plasma;
+    mc-mojave-plasma.url = ./packages/mc-mojave-plasma;
   };
 
   outputs = { 
@@ -27,6 +28,7 @@
     plasma-manager,
     layan-plasma,
     mc-sur-plasma,
+    mc-mojave-plasma,
     ... }@inputs: {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -64,9 +66,11 @@
           plasma-manager;
           layan-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
           mc-sur-plasma = mc-sur-plasma.packages."x86_64-linux".mc-sur-plasma;
+          mc-mojave-plasma = mc-mojave-plasma.packages."x86_64-linux".mc-mojave-plasma;
       };
 
       modules = [
+        mc-mojave-plasma.homeManagerModules.mc-mojave-plasma
         mc-sur-plasma.homeManagerModules.mc-sur-plasma
         layan-plasma.homeManagerModules.layan-plasma
         plasma-manager.homeManagerModules.plasma-manager
