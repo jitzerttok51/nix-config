@@ -14,6 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+    custom-packages.url = ./packages;
     layan-plasma.url = ./packages/layan-plasma;
     mc-sur-plasma.url = ./packages/mc-sur-plasma;
     mc-mojave-plasma.url = ./packages/mc-mojave-plasma;
@@ -26,10 +27,10 @@
     home-manager,
     nix-vscode-extensions,
     plasma-manager,
-    layan-plasma,
-    mc-sur-plasma,
-    mc-mojave-plasma,
-    ... }@inputs: {
+    custom-packages,
+    ... }@inputs: let 
+      system = "x86_64-linux";
+    in {
 
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -64,15 +65,15 @@
           home-manager 
           hyprland
           plasma-manager;
-          layan-plasma = layan-plasma.packages."x86_64-linux".layan-plasma;
-          mc-sur-plasma = mc-sur-plasma.packages."x86_64-linux".mc-sur-plasma;
-          mc-mojave-plasma = mc-mojave-plasma.packages."x86_64-linux".mc-mojave-plasma;
+          layan-plasma = custom-packages.packages.${system}.layan-plasma;
+          mc-sur-plasma = custom-packages.packages.${system}.mc-sur-plasma;
+          mc-mojave-plasma = custom-packages.packages.${system}.mc-mojave-plasma;
       };
 
       modules = [
-        mc-mojave-plasma.homeManagerModules.mc-mojave-plasma
-        mc-sur-plasma.homeManagerModules.mc-sur-plasma
-        layan-plasma.homeManagerModules.layan-plasma
+        custom-packages.homeManagerModules.mc-mojave-plasma
+        custom-packages.homeManagerModules.mc-sur-plasma
+        custom-packages.homeManagerModules.layan-plasma
         plasma-manager.homeManagerModules.plasma-manager
         ./home-config/users/nprodanov/home.nix 
       ];
