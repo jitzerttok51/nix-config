@@ -1,4 +1,4 @@
-{ config, pkgs, layanPlasma, ...}: {
+{ config, pkgs, mc-sur-plasma, ...}: {
     programs.plasma = {
     enable = true;
     overrideConfig = true;
@@ -23,6 +23,7 @@
       "baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnLeft" = "";
       "kwinrc"."org.kde.kdecoration2"."ButtonsOnRight" = "IAX";
+      "kwinrc"."Windows"."BorderlessMaximizedWindows" = true;
       "kwinrc"."Desktops"."Number" = {
         value = 8;
         # Forces kde to not change this value (even through the settings app).
@@ -85,7 +86,26 @@
           "org.kde.plasma.appmenu"
           "org.kde.plasma.panelspacer"
           "org.kde.plasma.systemtray"
-          "org.kde.windowbuttons"
+          {
+            name = "org.kde.windowbuttons";
+            config = {
+              ConfigDialog = {
+                DialogHeight = 540;
+                DialogWidth = 720;
+              };
+
+              General = {
+                buttons = "3|4|5|10|2|9";
+                containmentType = "Plasma";
+                perScreenActive = true;
+                selectedPlugin = "org.kde.kwin.aurorae";
+                selectedScheme = "${mc-sur-plasma}/share/color-schemes/McSurDark.colors";
+                selectedTheme = "__aurorae__svg__McSur-dark";
+                useCurrentDecoration = false;
+                visibility = "ActiveMaximizedWindow";
+              };
+            };
+          }
           # TODO: Figure out how to add this part to config
           /*
           [Containments][439][Applets][454][Configuration][ConfigDialog]
@@ -105,6 +125,9 @@
           "org.kde.plasma.digitalclock"
         ];
       }
+    ];
+    window-rules = [
+
     ];
   };
 }
