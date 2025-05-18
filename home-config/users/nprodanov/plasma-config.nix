@@ -7,7 +7,7 @@
       windowDecorations.library="org.kde.kwin.aurorae";
       windowDecorations.theme="__aurorae__svg__McSur-dark";
       splashScreen.theme = "Noir-Splash-6";
-      theme = "McMojave";
+      theme = "McSur-dark";
       clickItemTo = "select";
       cursor.theme = "Breeze_Light"; # WinSur-dark-cursors
       iconTheme = "Papirus-Dark";
@@ -30,13 +30,13 @@
       };
     };
     shortcuts = {
-      ksmserver = { "Lock Session" = [ "Screensaver" "Meta+Ctrl+Alt+L" ]; };
+      ksmserver = { "Lock Session" = [ "Meta+L" "Screensaver" "Meta+Ctrl+Alt+L" ]; };
 
       kwin = {
         "Expose" = "Meta+,";
         "Switch Window Down" = "Meta+J";
         "Switch Window Left" = "Meta+H";
-        "Switch Window Right" = "Meta+L";
+        "Switch Window Right" = "Meta+P";
         "Switch Window Up" = "Meta+K";
       };
     };
@@ -44,6 +44,10 @@
       # Windows-like panel at the bottom
       {
         location = "bottom";
+        alignment = "center";
+        # extraSettings = "";
+        height = 64;
+        lengthMode = "fit";
         widgets = [
           "org.kde.plasma.icontasks"
         ];
