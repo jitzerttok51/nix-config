@@ -65,6 +65,7 @@
           home-manager 
           hyprland
           plasma-manager;
+          custom-packages = custom-packages.packages.${system};
           layan-plasma = custom-packages.packages.${system}.layan-plasma;
           mc-sur-plasma = custom-packages.packages.${system}.mc-sur-plasma;
           mc-mojave-plasma = custom-packages.packages.${system}.mc-mojave-plasma;

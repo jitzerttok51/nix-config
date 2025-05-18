@@ -16,6 +16,7 @@
         layan-plasma = pkgs.callPackage ./layan-plasma { };
         mc-mojave-plasma = pkgs.callPackage ./mc-mojave-plasma { };
         mc-sur-plasma = pkgs.callPackage ./mc-sur-plasma { };
+        viber = pkgs.callPackage ./viber { };
       };
       homeManagerModules = {
         layan-plasma = { ... }: { imports = [ ./layan-plasma/module.nix ]; };

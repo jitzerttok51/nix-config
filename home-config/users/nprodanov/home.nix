@@ -6,6 +6,7 @@
     ./plasma-config
     ./shell.nix
     ./git.nix
+    ./other.nix
     ../../../modules/desktops/hyprland.nix
   ];
 
@@ -27,7 +28,6 @@
     meld
     # caprine
     caprine-bin
-    # viber TODO: Figure out how to install it
     xiphos # TODO: Might use another bible app
     mpv
     wofi # TODO: Add it to hyprland specific confg
@@ -42,7 +42,7 @@
 
   home.sessionVariables = { EDITOR = "vim"; };
 
-  nixpkgs.overlays = [ (import ../../../overlays/viber.nix) ];
+  # nixpkgs.overlays = [ (import ../../../overlays/viber.nix) ];
 
   home.shellAliases = {
     cat = "bat";
