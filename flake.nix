@@ -15,9 +15,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     custom-packages.url = ./packages;
-    layan-plasma.url = ./packages/layan-plasma;
-    mc-sur-plasma.url = ./packages/mc-sur-plasma;
-    mc-mojave-plasma.url = ./packages/mc-mojave-plasma;
   };
 
   outputs = { 
