@@ -6,6 +6,12 @@
     ];
 
     networking.hostName = "sum-test-vm";
+    boot.loader.grub.enable = true;
+    boot.loader.grub.device = "/dev/sda"; 
+    time.timeZone = "Europe/Sofia";
+    nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+    nixpkgs.config.allowUnfree = true;
 
     services.openssh = {
         enable = true;
