@@ -48,6 +48,14 @@
       ];
     };
 
+    nixosConfigurations.sum-test-vm = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = { inherit home-manager; };
+      modules = [
+        ./hosts/sum-test-vm/configuration.nix
+      ];
+    };
+
     nixosConfigurations.nprodanov-pc = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit home-manager hyprland; };

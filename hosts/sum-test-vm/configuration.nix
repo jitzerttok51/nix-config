@@ -5,7 +5,7 @@
         ../../modules/users/vmtest.nix
     ];
 
-    networking.hostName = "nix-test-vm";
+    networking.hostName = "sum-test-vm";
 
     services.openssh = {
         enable = true;
