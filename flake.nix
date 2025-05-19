@@ -14,7 +14,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    custom-packages.url = ./packages;
+    custom-packages.url = "./packages";
   };
 
   outputs = { 
