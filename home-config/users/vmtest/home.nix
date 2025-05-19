@@ -55,7 +55,7 @@
         panel-zone-icon-sizes = builtins.toJSON [
             { panelId = 1; left = 0; center = 0; right = 24; }
             { panelId = 2; left = 0; center = 0; right = 0; }
-          ];
+        ];
         panel-zone-symbolic-icon-sizes = builtins.toJSON [
             { panelId = 1; left = 28; center = 28; right = 16; }
             { panelId = 2; left = 28; center = 28; right = 28; }
@@ -65,7 +65,7 @@
             { panelId = 2; left = 0; center = 0; right = 0; }
         ];
         panels-autohide = [
-            "1:false"
+            "1:false" # True for "Auto hide panel" # intel for "Inteligently hide panel" # false for "Always show panel"
             "2:false"
         ];
         panels-enabled = [
@@ -76,6 +76,8 @@
             "1:0:36"
             "2:0:60"
         ];
+
+        # Show delay and hide delay are in milliseconds and are used when autohide: true/intel
         panels-hide-delay = [
             "1:0"
             "2:0"
@@ -84,6 +86,15 @@
             "1:0"
             "2:0"
         ];
+        # next-applet-id
+        # This setting is essentially all appelets in the session. Each applet is assigned an id which
+        # is on the far right. The next-applet-id tells cinnamon what id should the next created applet be.
+        # The first parameter denotes the panel id, after that the possition on the panel and the order in that position.
+        # Settings of applets are written inside /home/vmtest/.config/cinnamon/spices
+        # Each applet type has a folder and the folder contains JSON files with the IDs of each instance of the applet
+        # Example path /home/vmtest/.config/cinnamon/spices/workspace-switcher@cinnamon.org/15.json
+        # The schema for these settings can be found at 
+        # ${pkgs.cinnamon-common}/share/cinnamon/applets/<applet type>/settings-schema.json
         enabled-applets=[
           "panel1:left:0:menu@cinnamon.org:0" 
           "panel1:left:1:workspace-switcher@cinnamon.org:15"
