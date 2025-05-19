@@ -76,5 +76,19 @@
         ./home-config/users/nprodanov/home.nix 
       ];
     };
+
+    homeConfigurations."vmtest" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        
+      extraSpecialArgs = { 
+        inherit 
+          nix-vscode-extensions 
+          home-manager;
+      };
+
+      modules = [
+        ./home-config/users/vmtest/home.nix 
+      ];
+    };
   };
 }
