@@ -37,6 +37,10 @@
     zulu17
     neofetch
     bat
+    slack # TODO: Fix this
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/sl/slack/package.nix
+    # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/release/rpm-build.nix
+    proton-pass
     # dconf-editor # TODO: Add to cinnamon
   ];
 
