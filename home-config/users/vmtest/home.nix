@@ -39,6 +39,8 @@
     rcat = "cat";
   };
 
+  programs.cinnamon.enable = true;
+
   # TODO: Move in another file for cinnamon
   dconf.settings = {
        "org/gnome/libgnomekbd/keyboard" = {

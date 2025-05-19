@@ -87,6 +87,7 @@
       };
 
       modules = [
+        custom-packages.homeManagerModules.cinnamon-manager
         ./home-config/users/vmtest/home.nix 
       ];
     };

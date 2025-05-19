@@ -22,6 +22,7 @@
         layan-plasma = { ... }: { imports = [ ./layan-plasma/module.nix ]; };
         mc-mojave-plasma = { ... }: { imports = [ ./mc-mojave-plasma/module.nix ]; };
         mc-sur-plasma = { ... }: { imports = [ ./mc-sur-plasma/module.nix ]; };
+        cinnamon-manager = { ... }: { imports = [ ./cinnamon-manager/module.nix ]; };
       };
     };
 }
