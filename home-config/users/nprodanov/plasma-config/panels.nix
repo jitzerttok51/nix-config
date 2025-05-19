@@ -75,7 +75,18 @@
               };
             };
           }
-          "org.kde.plasma.digitalclock"
+          {
+            name = "org.kde.plasma.digitalclock";
+            config = {
+              General = {
+                autoFontAndSize=false;
+                fontFamily="DejaVu Sans";
+                fontStyleName="Condensed";
+                fontWeight=400;
+                showDate=false;
+              };
+            };
+          }
         ];
       }
     ];
