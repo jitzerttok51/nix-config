@@ -6,7 +6,7 @@ let
     runtimeInputs = with pkgs; [ python3 ];
     text = ''python ${./write_config.py} "$@"'';
   };
-  script = ''${writeConfigScript}/bin/write_config'';
+  script = ''${writeConfigScript}/bin/write_config ${builtins.toJSON cfg}'';
 in
 {
   options = {
