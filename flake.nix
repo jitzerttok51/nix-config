@@ -29,14 +29,6 @@
       system = "x86_64-linux";
     in {
 
-    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit home-manager; };
-      modules = [
-        ./hosts/nix/configuration.nix
-      ];
-    };
-
     nixosConfigurations.nix-test-vm = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit home-manager; };
