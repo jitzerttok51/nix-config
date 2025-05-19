@@ -1,7 +1,12 @@
 { config, lib, pkgs, ... }: 
 let 
   cfg = config.programs.cinnamon;
-  script = ''echo "Hello World!" > .hello_world'';
+  writeConfigScript = pkgs.writeShellApplication {
+    name = "write_config";
+    runtimeInputs = with pkgs; [ python3 ];
+    text = ''python ${./write_config.py} "$@"'';
+  };
+  script = ''${writeConfigScript}/bin/write_config'';
 in
 {
   options = {
