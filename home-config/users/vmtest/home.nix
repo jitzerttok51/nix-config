@@ -73,8 +73,8 @@
             "2:0:bottom"
         ];
         panels-height = [
-            "1:0:36"
-            "2:0:60"
+            "1:36"
+            "2:60"
         ];
         panels-hide-delay = [
             "1:0"
@@ -98,8 +98,7 @@
           "panel1:right:7:network@cinnamon.org:10" 
           "panel1:right:8:sound@cinnamon.org:11" 
           "panel1:right:9:power@cinnamon.org:12" 
-          "panel1:right:10:calendar@cinnamon.org:13" 
-          "panel1:right:11:cornerbar@cinnamon.org:14"
+          "panel1:right:10:calendar@cinnamon.org:13"
 
           "panel2:center:0:grouped-window-list@cinnamon.org:2" 
         ];

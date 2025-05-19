@@ -3,7 +3,7 @@ let
   cfg = config.programs.cinnamon;
   writeConfigScript = pkgs.writeShellApplication {
     name = "write_config";
-    runtimeInputs = with pkgs; [ python3 ];
+    runtimeInputs = with pkgs; [ python3 dconf ];
     text = ''
       python -m venv cinnamon-manager-venv
       ./cinnamon-manager-venv/bin/pip install dconf

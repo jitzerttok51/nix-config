@@ -1,5 +1,6 @@
 import sys
 import dconf
+import subprocess
 
 def runCommand(command):
     ret = subprocess.run(command, capture_output=True)
