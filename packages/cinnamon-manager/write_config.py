@@ -1,4 +1,5 @@
 import sys
+import dconf
 
 try:
     # Use 'with open' to ensure the file is properly closed after writing.

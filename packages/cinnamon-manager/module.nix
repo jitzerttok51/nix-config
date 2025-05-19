@@ -4,7 +4,12 @@ let
   writeConfigScript = pkgs.writeShellApplication {
     name = "write_config";
     runtimeInputs = with pkgs; [ python3 ];
-    text = ''python ${./write_config.py} "$@"'';
+    text = ''
+      python -m venv cinnamon-manager-venv
+      ./cinnamon-manager-venv/bin/pip install dconf
+      ./cinnamon-manager-venv/bin/python ${./write_config.py} "$@"
+      rm -rf cinnamon-manager-venv
+    '';
   };
   script = ''${writeConfigScript}/bin/write_config ${builtins.toJSON cfg}'';
 in
