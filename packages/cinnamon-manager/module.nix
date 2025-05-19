@@ -1,12 +1,11 @@
-{ config, pkgs, ... }: 
+{ config, lib, pkgs, ... }: 
 let 
   cfg = config.programs.cinnamon;
-  script = ''
-    echo "Hello World!" > .hello_world
-  '';
+  script = ''echo "Hello World!" > .hello_world'';
+in
 {
   options = {
-    enable = lib.mkOption {
+    programs.cinnamon.enable = lib.mkOption {
       type = lib.types.bool;
       default = false;
       description = ''
