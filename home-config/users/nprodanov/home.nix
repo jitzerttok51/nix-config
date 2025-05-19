@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  # TODO: Add support for flatpaks
   imports = [
     ./vscode.nix
     ./plasma-config
