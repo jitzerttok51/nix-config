@@ -19,6 +19,8 @@
     jetbrains.idea-community
     eclipses.eclipse-jee
     vscode
+    meld
+    pinentry-tty
     yt-dlp
     nixfmt
     libreoffice
@@ -82,6 +84,7 @@
         ];
         enabled-applets=[
           "panel1:left:0:menu@cinnamon.org:0" 
+          "panel1:left:1:workspace-switcher@cinnamon.org:15"
           "panel1:left:2:separator@cinnamon.org:1"
           "panel1:right:0:systray@cinnamon.org:3" 
           "panel1:right:1:xapp-status@cinnamon.org:4" 

@@ -5,7 +5,7 @@
     userName = "Nikolay Prodanov";
     signing = {
       signByDefault = true;
-      key = "0x7F7E202ABB244D20";
+      key = "0xEDAFC88588BBFEFA";
       format = "openpgp";
     };
   };
@@ -15,5 +15,12 @@
     addKeysToAgent = "yes";
   };
 
-  programs.gpg = { enable = true; };
+  services.gpg-agent = {
+    enable = true;
+    pinentry.package = pkgs.pinentry-tty;
+  };
+
+  programs.gpg = { 
+    enable = true; 
+  };
 }
