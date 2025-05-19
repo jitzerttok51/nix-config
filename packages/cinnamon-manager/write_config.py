@@ -26,3 +26,5 @@ def createDummyFile():
         # Catch any other unexpected errors.
         print(f"An unexpected error occurred while creating file: {e}")
 
+dconfDummyExample()
+createDummyFile()
