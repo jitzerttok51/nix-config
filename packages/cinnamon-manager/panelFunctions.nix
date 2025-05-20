@@ -26,9 +26,10 @@ let
             id = container.nextId;
         };
         enhancedPanel = (idAndName // defaultPanel) // panel;
+        enhancedPanelWithApplets = enhancedPanel // ({ applets = (defaultPanel.applets // panel.applets); });
     in {
         inherit nextId;
-        panels = container.panels ++ [ enhancedPanel ];
+        panels = container.panels ++ [ enhancedPanelWithApplets ];
     };
 
   in (builtins.foldl' accFunc defContainer panels).panels;
@@ -46,7 +47,7 @@ let
         };
         fun = cont: applet: with cont; {
             id = id + 1;
-            applets = applets ++ [ ({ inherit id;} // applet) ];
+            applets = cont.applets ++ [ ( { inherit id; } // applet ) ];
         };
 
     in cont // (builtins.foldl' fun cont applets);
@@ -90,6 +91,16 @@ let
     in (panel // result);
   in builtins.map fun panels;
 
+  toAppletStrings = panels: let
+
+    fun = cont: panel: let 
+        func = applet: 
+            "${panel.name}:${applet.position}:${builtins.toString applet.index}:${applet.type}:${builtins.toString applet.id}";
+        map = region: (builtins.map func panel.applets.${region});
+        result = (map "left") ++ (map "center") ++ (map "right");
+    in cont ++ result;
+  in builtins.foldl' fun [] panels;
+
   createDconfInput = panels: let
     defDeconfOutput = {
         panels-autohide = [];
@@ -117,7 +128,10 @@ let
             "${builtins.toString panel.id}:0:${builtins.toString panel.height}"
         ];
     };
-  in defDeconfOutput // (builtins.foldl' accFunc defDeconfOutput panels);
+
+    enabled-applets = toAppletStrings panels;
+    result = (defDeconfOutput // (builtins.foldl' accFunc defDeconfOutput panels));
+  in enabled-applets;
 
   addNamespace = dconfSettings: {
     "org/cinnamon" = {} // dconfSettings;
@@ -128,5 +142,6 @@ in { inherit
     createDconfInput
     addIdsToApplets
     addIdsToPanels
-    attachRegionToApplets; 
+    attachRegionToApplets
+    toAppletStrings; 
 }
