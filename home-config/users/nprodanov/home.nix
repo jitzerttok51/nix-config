@@ -8,7 +8,7 @@
     ./shell.nix
     ./git.nix
     ./other.nix
-    ../../../modules/desktops/hyprland.nix
+    ./hyprland
   ];
 
   programs.home-manager.enable = true;
@@ -27,11 +27,15 @@
     qbittorrent
     libreoffice
     meld
+    kdePackages.kmail
+    kdePackages.kmail-account-wizard
+    kdePackages.kmailtransport
+    protonmail-bridge-gui
+    protonmail-desktop
     # caprine
     caprine-bin
     xiphos # TODO: Might use another bible app
     mpv
-    wofi # TODO: Add it to hyprland specific confg
     # chromium
     # obsidian
     thunderbird

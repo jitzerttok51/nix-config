@@ -53,6 +53,7 @@
     ffmpeg
     home-manager
     kitty
+    git-lfs
   ];
 
 #  services.openssh = {
