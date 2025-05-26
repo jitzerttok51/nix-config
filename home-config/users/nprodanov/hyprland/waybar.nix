@@ -12,7 +12,10 @@
         modules-left =
           [ "custom/menu" "hyprland/workspaces" "hyprland/window" ];
         modules-center =
-          [ "custom/cmus" "custom/weather" "custom/foot" "custom/nemo" ];
+          [ "custom/cmus" "custom/weather" 
+          # "custom/foot" 
+          # "custom/nemo" 
+          ];
         modules-right = [
           "tray"
           "hyprland/language"
