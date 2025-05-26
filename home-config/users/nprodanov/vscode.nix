@@ -14,6 +14,7 @@
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
       userSettings = {
+        "editor.fontFamily" = "Meslo lg";
         "workbench.colorTheme" = "Dracula Theme";
         "window.zoomLevel" = 1; 
         "window.titleBarStyle" = "native";

@@ -1,96 +1,184 @@
-{ config, pkgs, ... }: let 
-  font = "Meslo-lg";
+{ config, pkgs, ... }:
+let font = "Meslo-lg";
+  wallpapers-path = ".local/hypr-wallpapers";
+  wallpaper = "${wallpapers-path}/min-24.png";
+  profile-pic = "${wallpapers-path}/9400_5_2_01.jpg";
+  scripts-path = ".local/hypr-scripts";
+  battery-level = "${scripts-path}/battery-level.sh";
+  network-status = "${scripts-path}/network-status.sh";
+  cmus-lock = "${scripts-path}/cmus-lock.sh";
 in {
+    home.file.${wallpapers-path} = {
+    source = ./wallpapers;
+    recursive = true;
+  };
+  home.file.${scripts-path} = {
+    source = ./scripts;
+    recursive = true;
+  };
   programs.hyprlock = {
     enable = true;
     settings = {
-      general = {
-        hide_cursor = false;
-      };
-      animations = {
-        enabled = true;
-        bezier = "linear, 1, 1, 0, 0";
-        animation = [
-          "fadeIn, 1, 5, linear"
-          "fadeOut, 1, 5, linear"
-          "inputFieldDots, 1, 2, linear"
-        ];
-      };
+      source = "/home/justin/.cache/wal/colors-hyprland.conf";
 
       background = {
         monitor = "";
-        path = "screenshot";
-        blur_passes = 3;
+        # path = "screenshot"; # Commented out in source, so also in Nix
+        path = wallpaper;
+        # color = "$background"; # Commented out in source
+        blur_passes = 1;
+        contrast = 1;
+        brightness = 0.8;
+        vibrancy = 0.2;
+        vibrancy_darkness = 0.2;
+      };
+
+      general = {
+        no_fade_in = true;
+        no_fade_out = true;
+        hide_cursor = false;
+        grace = 0;
+        disable_loading_bar = true;
       };
 
       input-field = {
         monitor = "";
-        size = "20%, 5%";
-        outline_thickness = 3;
-        inner_color = "rgba(0, 0, 0, 0.0)"; # no fill
-
-        outer_color = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
-        fail_color = "rgba(ff6633ee) rgba(ff0066ee) 40deg";
-
-        font_color = "rgb(143, 143, 143)";
+        size = "250, 60";
+        outline_thickness = 2;
+        dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
+        dots_spacing = 0.35; # Scale of dots' absolute size, 0.0 - 1.0
+        dots_center = true;
+        outer_color = "#1e1e2e";
+        inner_color = "#cdd6f4";
+        font_color = "#cdd6f4";
         fade_on_empty = false;
-        rounding = 15;
-
-        font_family = font;
-        placeholder_text = "Input password...";
-        fail_text = "$PAMFAIL";
-
-        # uncomment to use a letter instead of a dot to indicate the typed password
-        # dots_text_format = "*";
-        # dots_size = 0.4;
-        dots_spacing = 0.3;
-
-        # uncomment to use an input indicator that does not show the password length (similar to swaylock's input indicator)
-        # hide_input = true;
-
-        position = "0, -20";
+        rounding = -1;
+        check_color = "#cdd6f4";
+        placeholder_text =
+          ''<i><span foreground="##1e1e2e">Input Password...</span></i>'';
+        hide_input = false;
+        position = "0, -50";
         halign = "center";
         valign = "center";
       };
 
-      # TIME
+      # shape = [
+      #   {
+      #     size = "90, 40";
+      #     color = "rgba(0, 0, 0, 0.0)";
+      #     rounding = "-1";
+      #     border_size = 4;
+      #     border_color = "rgba(0, 207, 230, 1.0)";
+      #     position = "-340, -5";
+      #     halign = "right";
+      #     valign = "top";
+      #   }
+      # ];
+
+      # Labels are handled as a list of attribute sets in Nix
       label = [
-        {
-          monitor = "";
-          text =
-            "$TIME"; # ref. https://wiki.hyprland.org/Hypr-Ecosystem/hyprlock/#variable-substitution
-          font_size = 90;
-          font_family = font;
-
-          position = "-30, 0";
-          halign = "right";
-          valign = "top";
-        }
-
         # DATE
         {
           monitor = "";
-          text = ''
-            cmd[update:60000] date +"%A, %d %B %Y"''; # update every 60 seconds
-          font_size = 25;
-          font_family = font;
+          text = ''cmd[update:1000] echo "$(date +"%A, %B %d")"'';
+          color = "#cdd6f4";
+          font_size = 22;
+          font_family = "Bebas Neue";
+          position = "0, -400";
+          halign = "center";
+          valign = "center";
+        }
 
-          position = "-30, -150";
+        # TIME
+        {
+          monitor = "";
+          text = ''cmd[update:1000] echo "$(date +"%-H:%M")"'';
+          color = "#cdd6f4";
+          font_size = 95;
+          font_family = "Bebas Neue";
+          position = "0, -320";
+          halign = "center";
+          valign = "center";
+        }
+
+        # CURRENT SONG (commented out in original, so it won't be in the active Nix config unless uncommented)
+        {
+          monitor = "";
+          text = ''cmd[update:1000] echo "$(${cmus-lock})"'';
+          # color = "$foreground";
+          color = "#eba0ac";
+          font_size = 16;
+          font_family = "JetBrains Mono";
+          position = "0, 50";
+          halign = "center";
+          valign = "bottom";
+        }
+
+        # User Label (whoami.sh)
+        {
+          monitor = "";
+          text = ''
+            cmd[update:1000] echo "$(/home/justin/Documents/Scripts/whoami.sh)"'';
+          color = "$foreground";
+          font_size = 14;
+          font_family = "JetBrains Mono";
+          position = "0, -10";
+          halign = "center";
+          valign = "top";
+        }
+
+        # Battery Label (battery.sh)
+        {
+          monitor = "";
+          text = ''
+            cmd[update:1000] echo "$(${battery-level})"'';
+          color = "$foreground";
+          font_size = 16;
+          font_family = "JetBrains Mono";
+          position = "-360, -15";
           halign = "right";
           valign = "top";
         }
 
+        # Network Status Label (network-status.sh)
         {
           monitor = "";
-          text = "$LAYOUT[en,ru]";
-          font_size = 24;
-          onclick = "hyprctl switchxkblayout all next";
+          text = ''
+            cmd[update:1000] echo "$(${network-status})"'';
+          color = "$foreground";
+          font_size = 16;
+          font_family = "Meslo lg";
+          position = "-100, -10";
+          halign = "right";
+          valign = "top";
+        }
+      ];
 
-          position = "250, -20";
+      # Images are handled as a list of attribute sets in Nix
+      image = [
+        # Profile Picture
+        {
+          monitor = "";
+          path = profile-pic;
+          size = 200;
+          border_size = 2;
+          border_color = "$foreground";
+          position = "0, 100";
           halign = "center";
           valign = "center";
         }
+
+        # Desktop Environment
+        # {
+        #   monitor = "";
+        #   path = "/home/justin/Pictures/profile_pictures/hypr.png";
+        #   size = 75;
+        #   border_size = 2;
+        #   border_color = "$foreground";
+        #   position = "-50, 50";
+        #   halign = "right";
+        #   valign = "bottom";
+        # }
       ];
     };
   };

@@ -1,18 +1,34 @@
 { pkgs, lib, config, hyprland, ... }:
 let
-  menu = "${pkgs.wofi}/bin/wofi --show drun";
+  menu = "~/.config/rofi/launchers/type-6/launcher.sh";
   terminal = "${pkgs.kitty}/bin/kitty";
   fileManager = "${pkgs.kdePackages.dolphin}/bin/dolphin";
   browser = "${pkgs.chromium}/bin/chromium --ozone-platform-hint=auto";
   hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
+  hyprdock-style = ".config/nwg-dock-hyprland/style.css";
+  hyprdock = "${pkgs.nwg-dock-hyprland}/bin/nwg-dock-hyprland -i 36 -r -mb 5 -x";
+  waybar = "${pkgs.waybar}/bin/waybar";
 in {
 
   fonts.fontconfig.enable = true;
   home.packages = with pkgs; [
     nerd-fonts.meslo-lg
+    nerd-fonts.iosevka
     hyprshot
     brightnessctl
+    nwg-dock-hyprland
+    rofi
   ];
+
+  home.file.${hyprdock-style} = {
+    source = ./dock-style.css;
+    recursive = true;
+  };
+
+  home.file.".config/rofi" = {
+    source = ./rofi;
+    recursive = true;
+  };
 
   imports = [
     ./waybar.nix
@@ -21,12 +37,8 @@ in {
     ./hypridle.nix
     ./hyprpaper.nix
     ./kitty.nix
+    ./cmus.nix
   ]; 
-  
-  programs.waybar = {
-    enable = true;
-    systemd.enable = true;
-  };
 
   # TODO: Fix chrome and vscode font rendering
   home.sessionVariables = {
@@ -45,6 +57,10 @@ in {
     package = null;
     portalPackage = null;
     settings = {
+      exec-once = [
+        # waybar
+        hyprdock
+      ];
       xwayland = {
        force_zero_scaling = true;
       };
@@ -61,8 +77,8 @@ in {
         border_size = 2;
 
         # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
-        "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        "col.inactive_border" = "rgba(595959aa)";
+        "col.active_border" = "rgba(f2cdcdee) rgba(f5e0dcee) 45deg";
+        "col.inactive_border" = "rgba(1e1e2eff)";
 
         # Set to true enable resizing windows by clicking and dragging on borders and gaps
         resize_on_border = false;
@@ -97,9 +113,9 @@ in {
         };
       };
 
-      # https://wiki.hyprland.org/Configuring/Variables/#animations
+      # TODO: Check animations
       animations = {
-        enabled = "yes, please :)";
+        enabled = true;
 
         # Default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
 
@@ -155,11 +171,12 @@ in {
 
       # https://wiki.hyprland.org/Configuring/Variables/#input
       input = {
-        kb_layout = "us";
-        # kb_variant =;
-        # kb_model =
-        # kb_options =
-        # kb_rules =
+          kb_layout = "us,bg";
+          kb_variant = ",phonetic";
+          kb_model = "";
+          kb_options = "grp:alt_shift_toggle";
+          kb_rules = "";
+
 
         follow_mouse = 1;
 

@@ -5,200 +5,153 @@
     systemd.enable = true;
     settings = {
       mainBar = {
-        height = 30;
-        spacing = 4;
-        modules-left = [ 
-            "hyprland/workspaces" 
-            "sway/mode" 
-            "sway/scratchpad" 
-            "custom/media" 
-        ];
-        modules-center = [ "hyprland/window" ];
+        height = 20;
+        # width = 1880;
+        margin-top = 10;
+
+        modules-left =
+          [ "custom/menu" "hyprland/workspaces" "hyprland/window" ];
+        modules-center =
+          [ "custom/cmus" "custom/weather" "custom/foot" "custom/nemo" ];
         modules-right = [
-          "mpd"
-          "idle_inhibitor"
-          "pulseaudio"
-          "network"
-          "power-profiles-daemon"
-          "cpu"
-          "memory"
-          "temperature"
-          "backlight"
-          "keyboard-state"
-          "sway/language"
-          "battery"
-          "battery#bat2"
-          "clock"
           "tray"
+          "hyprland/language"
+          "pulseaudio"
+          "battery"
+          "clock"
           "custom/power"
         ];
 
-        "hyprland/window".separate-outputs = true;
-
-        keyboard-state = {
-          numlock = true;
-          capslock = true;
-          format = "{name} {icon}";
-          format-icons = {
-            locked = "";
-            unlocked = "";
-          };
-        };
-
-        "sway/mode" = { "format" = ''<span style="italic">{}</span>''; };
-        "sway/scratchpad" = {
-          "format" = "{icon} {count}";
-          "show-empty" = false;
-          "format-icons" = [ "" "" ];
-          "tooltip" = true;
-          "tooltip-format" = "{app}: {title}";
-        };
-        mpd = {
-          format =
-            "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
-          format-disconnected = "Disconnected ";
-          format-stopped =
-            "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
-          unknown-tag = "N/A";
-          interval = 5;
-          consume-icons = { on = " "; };
-          random-icons = {
-            off = ''<span color="#f53c3c"></span> '';
-            on = " ";
-          };
-          repeat-icons = { on = " "; };
-          single-icons = { on = "1 "; };
-          state-icons = {
-            paused = "";
-            playing = "";
-          };
-          tooltip-format = "MPD (connected)";
-          tooltip-format-disconnected = "MPD (disconnected)";
-        };
-        idle_inhibitor = {
+        "custom/menu" = { # Converted from custom/menu
           format = "{icon}";
-          format-icons = {
-            activated = "";
-            deactivated = "";
-          };
-        };
-        tray = {
-          # icon-size = 21;
-          spacing = 10;
-        };
-        clock = {
-          # timezone = "America/New_York";
-          tooltip-format = ''
-            <big>{:%Y %B}</big>
-            <tt><small>{calendar}</small></tt>'';
-          format-alt = "{:%Y-%m-%d}";
-        };
-        cpu = {
-          format = "{usage}% ";
+          format-icons = "";
+          on-click = "~/.config/rofi/launchers/type-6/launcher_2.sh";
+          escape = true;
           tooltip = false;
         };
-        memory = { format = "{}% "; };
-        temperature = {
-          # thermal-zone = 2;
-          # hwmon-path = "/sys/class/hwmon/hwmon2/temp1_input";
-          critical-threshold = 80;
-          # format-critical = "{temperatureC}°C {icon}";
-          format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" "" ];
-        };
-        backlight = {
-          # device = "acpi_video1";
-          format = "{percent}% {icon}";
-          format-icons = [ "" "" "" "" "" "" "" "" "" ];
-        };
+
         battery = {
           states = {
-            # good = 95;
-            warning = 30;
-            critical = 15;
-          };
-          format = "{capacity}% {icon}";
-          format-full = "{capacity}% {icon}";
-          format-charging = "{capacity}% ";
-          format-plugged = "{capacity}% ";
-          format-alt = "{time} {icon}";
-          # format-good = ""; # An empty format will hide the module
-          # format-full = "";
-          format-icons = [ "" "" "" "" "" ];
+            		warning = 30;
+            		critical = 15;
+        	};
+          format = "<span color='#fab387'>{icon}</span>  {capacity}%";
+          format-warning = "<span color='#f5543b'>{icon}</span>  {capacity}%";
+          format-critical = "<span color='#ff1f1f'>{icon}</span>  {capacity}%";
+          format-icons = [ "󰁺" "󰁼" "󰁾" "󰂀" "󰁹" ];
+          format-charging = "<span color='#62de72'>{icon}</span>  {capacity}%";
+        	format-plugged = "<span color='#fab387'>{icon}</span>   {capacity}%";
         };
-        battery_bat2 =
-          { # Note: JSON key "battery#bat2" is not a valid Nix identifier, converted to battery_bat2
-            bat = "BAT2";
-          };
-        power-profiles-daemon = {
+
+        "hyprland/workspaces" = { # Converted from hyprland/workspaces
           format = "{icon}";
-          tooltip-format = ''
-            Power profile: {profile}
-            Driver: {driver}'';
-          tooltip = true;
+          on-click = "activate";
           format-icons = {
-            default = "";
-            performance = "";
-            balanced = "";
-            power-saver = "";
+            urgent = "";
+            active = "";
+            default = "";
           };
+          tooltip = false;
         };
-        network = {
-          # interface = "wlp2*"; # (Optional) To force the use of this interface
-          format-wifi = "{essid} ({signalStrength}%) ";
-          format-ethernet = "{ipaddr}/{cidr} ";
-          tooltip-format = "{ifname} via {gwaddr} ";
-          format-linked = "{ifname} (No IP) ";
-          format-disconnected = "Disconnected ⚠";
-          format-alt = "{ifname}: {ipaddr}/{cidr}";
+
+        "hyprland/window" = { # Converted from hyprland/window
+          format = "{class}";
+          separate-outputs = false;
         };
+
+        "custom/cmus" = { # Converted from custom/cmus
+          format = "{icon}    {}";
+          format-icons = { default = [ "<span color='#89b4fa'></span>" ]; };
+          max-length = 45;
+          interval = 1;
+          exec = ''cmus-remote -C "format_print '%F'"'';
+          exec-if = "pgrep cmus";
+          on-click = "cmus-remote -u";
+          on-scroll-up = "cmus-remote --next";
+          on-scroll-down = "cmus-remote --prev";
+          escape = true;
+          tooltip = false;
+        };
+
+        "custom/weather" = { # Converted from custom/weather
+          format = "{}";
+          interval = 10;
+          exec = "~/.config/waybar/weather.sh";
+          tooltip = false;
+        };
+
+        "custom/foot" = { # Converted from custom/foot
+          format = "<span color='#a6e3a1'></span>";
+          on-click = "exec kitty -T home";
+          tooltip = false;
+        };
+
+        "custom/nemo" = { # Converted from custom/nemo
+          format = "<span color='#89b4fa'>󰉋</span>";
+          on-click = "exec dolphin ~";
+          tooltip = false;
+        };
+
+        tray = {
+          icon-size = 18;
+          spacing = 10;
+        };
+
+        "hyprland/language" = { # Converted from hyprland/language
+          format = "<span color='#fab387'>󰌏</span>   {}";
+          format-en = "EN";
+          format-bg = "BG";
+        };
+
         pulseaudio = {
-          # scroll-step = 1; # %, can be a float
-          format = "{volume}% {icon} {format_source}";
-          format-bluetooth = "{volume}% {icon} {format_source}";
-          format-bluetooth-muted = " {icon} {format_source}";
-          format-muted = " {format_source}";
-          format-source = "{volume}% ";
-          format-source-muted = "";
-          format-icons = {
-            headphone = "";
-            hands-free = "";
-            headset = "";
-            phone = "";
-            portable = "";
-            car = "";
-            default = [ "" "" "" ];
-          };
+          scroll-step = 5;
+          format = "<span color='#fab387'>{icon}</span>   {volume}%";
+          format-icons = { default = [ "" "" "" ]; };
           on-click = "pavucontrol";
+          tooltip = false;
         };
-        custom_media =
-          { # Note: JSON key "custom/media" is not a valid Nix identifier, converted to custom_media
-            format = "{icon} {text}";
-            return-type = "json";
-            max-length = 40;
-            format-icons = {
-              spotify = "";
-              default = "🎜";
-            };
-            escape = true;
-            exec =
-              "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder
-            # exec = "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null"; # Filter player based on name
-          };
-        custom_power =
-          { # Note: JSON key "custom/power" is not a valid Nix identifier, converted to custom_power
-            format = "⏻ ";
-            tooltip = false;
-            menu = "on-click";
-            menu-file =
-              "$HOME/.config/waybar/power_menu.xml"; # Menu file in resources folder
-            menu-actions = {
-              shutdown = "shutdown";
-              reboot = "reboot";
-              suspend = "systemctl suspend";
-              hibernate = "systemctl hibernate";
+
+        clock = {
+          format = "<span color='#fab387'></span>    {:%H:%M}";
+          tooltip-format = ''
+            <big><span color='#cdd6f4'>{:%Y %B}</span></big>
+            <tt><small>{calendar}</small></tt>'';
+          format-alt =
+            "<span color='#eba0ac'></span>    <span color='#cdd6f4'>{:%Y-%m-%d}</span>";
+
+          calendar = {
+            mode = "month";
+            mode-mon-col = 3;
+            weeks-pos = "right";
+            on-scroll = 1;
+            format = {
+              months = "<span color='#cdd6f4'><b>{}</b></span>";
+              days = "<span color='#cdd6f4'><b>{}</b></span>";
+              weeks = "<span color='#f5c2e7'><b>W{}</b></span>";
+              weekdays = "<span color='#f5c2e7'><b>{}</b></span>";
+              today = "<span color='#eba0ac'><b><u>{}</u></b></span>";
             };
           };
+          actions = {
+            on-click-right = "mode";
+            on-click-forward = "tz_up";
+            on-click-backward = "tz_down";
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
+        };
+
+        "custom/power" = { # Converted from custom/power
+          format = "{icon}";
+          format-icons = "";
+          on-click = "~/.config/rofi/powermenu/type-4/powermenu.sh";
+          escape = true;
+          tooltip = false;
+        };
+
+        escape = true;
+        exec =
+          "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder
       };
     };
     style = (builtins.readFile ./waybar-style.css);
