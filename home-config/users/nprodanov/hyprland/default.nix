@@ -59,7 +59,7 @@ in {
     settings = {
       exec-once = [
         # waybar
-        hyprdock
+        # hyprdock
       ];
       xwayland = {
        force_zero_scaling = true;
