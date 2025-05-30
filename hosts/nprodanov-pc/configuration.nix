@@ -54,7 +54,12 @@
     home-manager
     kitty
     git-lfs
+    powertop
   ];
+
+  powerManagement = {
+    powertop.enable = true; 
+  };
 
 #  services.openssh = {
 #    enable = true;

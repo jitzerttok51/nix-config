@@ -58,8 +58,8 @@
         };
 
         "hyprland/window" = { # Converted from hyprland/window
-          format = "{class}";
-          separate-outputs = false;
+          format = "{title}";
+          separate-outputs = true;
         };
 
         "custom/cmus" = { # Converted from custom/cmus

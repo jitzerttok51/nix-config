@@ -7,6 +7,7 @@ let font = "Meslo-lg";
   battery-level = "${scripts-path}/battery-level.sh";
   network-status = "${scripts-path}/network-status.sh";
   cmus-lock = "${scripts-path}/cmus-lock.sh";
+  cmus-toggle = "cmus-remote -u";
 in {
     home.file.${wallpapers-path} = {
     source = ./wallpapers;
@@ -107,6 +108,7 @@ in {
           text = ''cmd[update:1000] echo "$(${cmus-lock})"'';
           # color = "$foreground";
           color = "#eba0ac";
+          onclick = cmus-toggle;
           font_size = 16;
           font_family = "JetBrains Mono";
           position = "0, 50";
