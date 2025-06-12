@@ -4,26 +4,9 @@
   imports = [ 
       ./hardware-configuration.nix
       ../../modules/users/nprodanov.nix
-      # ../../modules/desktops/plasma6.nix
+      ../../modules/desktops/plasma6.nix
       # ../../modules/desktops/cinnamon.nix
   ];
-
-  services.xserver.enable = true;
-  services.displayManager.gdm = {
-    enable = true;
-    wayland = true;
-  };
-  services.desktopManager.gnome.enable = true;
-  programs.hyprland.enable = true;
-  programs.hyprland.package = hyprland.packages."${pkgs.system}".hyprland;
-  programs.hyprland.portalPackage = pkgs.xdg-desktop-portal-hyprland;
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-       pkgs.xdg-desktop-portal-gtk
-    ];
-  };
 
   networking.hostName = "nprodanov-pc";
 
@@ -38,12 +21,6 @@
       };
     };
   };
-
-  services.gnome.gnome-keyring.enable = true;
-  programs.seahorse.enable = true; # enable the graphical frontend
-  # environment.systemPackages = [ pkgs.libsecret ]; # libsecret api needed
-  security.pam.services.gdm.enableGnomeKeyring = true; # load gnome-keyring at startup
-
 
   time.timeZone = "Europe/Sofia";
   nix.settings = {
@@ -69,12 +46,7 @@
     dnslookup
     libsecret
     git-lfs
-    powertop
   ];
-
-  powerManagement = {
-    powertop.enable = true; 
-  };
 
 #  services.openssh = {
 #    enable = true;

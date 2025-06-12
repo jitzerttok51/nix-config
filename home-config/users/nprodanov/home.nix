@@ -4,11 +4,11 @@
   # TODO: Add support for flatpaks
   imports = [
     ./vscode.nix
-    # ./plasma-config
+    ./plasma-config
     ./shell.nix
     ./git.nix
     ./other.nix
-    ./hyprland
+    # ./hyprland
   ];
 
   programs.home-manager.enable = true;

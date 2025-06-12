@@ -5,14 +5,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixtest.url = "github:jetify-com/nixtest";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    nixtest,
     ...
   }: let
     system = "x86_64-linux";
