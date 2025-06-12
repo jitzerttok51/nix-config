@@ -1,9 +1,13 @@
-{ config, lib, pkgs, ... }: 
-let 
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
   cfg = config.programs.cinnamon;
   writeConfigScript = pkgs.writeShellApplication {
     name = "write_config";
-    runtimeInputs = with pkgs; [ python3 dconf ];
+    runtimeInputs = with pkgs; [python3 dconf];
     text = ''
       python -m venv cinnamon-manager-venv
       ./cinnamon-manager-venv/bin/pip install dconf
@@ -12,8 +16,7 @@ let
     '';
   };
   script = ''${writeConfigScript}/bin/write_config ${builtins.toJSON cfg}'';
-in
-{
+in {
   options = {
     programs.cinnamon.enable = lib.mkOption {
       type = lib.types.bool;
@@ -25,8 +28,8 @@ in
   };
   config = {
     home.activation = lib.mkIf cfg.enable {
-    configure-cinnamon = (
-        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      configure-cinnamon = (
+        lib.hm.dag.entryAfter ["writeBoundary"] ''
           $DRY_RUN_CMD ${script}
         ''
       );

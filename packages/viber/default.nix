@@ -40,7 +40,6 @@
   zstd,
   ...
 }:
-
 stdenv.mkDerivation {
   pname = "viber";
   version = "23.2.0.3";
@@ -53,9 +52,9 @@ stdenv.mkDerivation {
     hash = "sha256-9WHiI2WlsgEhCPkrQoAunmF6lSb2n5RgQJ2+sdnSShM=";
   };
 
-  nativeBuildInputs = [ makeWrapper ];
+  nativeBuildInputs = [makeWrapper];
 
-  buildInputs = [ dpkg ];
+  buildInputs = [dpkg];
 
   dontUnpack = true;
 
@@ -153,11 +152,10 @@ stdenv.mkDerivation {
   meta = {
     homepage = "https://www.viber.com";
     description = "Instant messaging and Voice over IP (VoIP) app";
-    sourceProvenance = with lib.sourceTypes; [ binaryNativeCode ];
+    sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     # license = lib.licenses.unfree;
     license = lib.licenses.gpl3;
-    platforms = [ "x86_64-linux" ];
-    maintainers = with lib.maintainers; [ jagajaga ];
+    platforms = ["x86_64-linux"];
+    maintainers = with lib.maintainers; [jagajaga];
   };
-
 }

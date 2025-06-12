@@ -1,10 +1,15 @@
-{ config, pkgs, mc-mojave-plasma, ... }: {
+{
+  config,
+  pkgs,
+  mc-mojave-plasma,
+  ...
+}: {
   options = {};
   config = {
     home.file = {
       ".config/Kvantum/McMojave/".source = "${mc-mojave-plasma}/Kvantum/McMojave/";
       ".config/Kvantum/McMojave-light/".source = "${mc-mojave-plasma}/Kvantum/McMojave-light/";
-      
+
       ".local/share/aurorae/themes/McMojave/".source = "${mc-mojave-plasma}/share/aurorae/themes/McMojave/";
       ".local/share/aurorae/themes/McMojave-1.5x/".source = "${mc-mojave-plasma}/share/aurorae/themes/McMojave-1.5x/";
       ".local/share/aurorae/themes/McMojave-light/".source = "${mc-mojave-plasma}/share/aurorae/themes/McMojave-light/";
@@ -12,7 +17,7 @@
 
       ".local/share/color-schemes/McMojave.colors".source = "${mc-mojave-plasma}/share/color-schemes/McMojave.colors";
       ".local/share/color-schemes/McMojaveLight.colors".source = "${mc-mojave-plasma}/share/color-schemes/McMojaveLight.colors";
-      
+
       ".local/share/plasma/desktoptheme/McMojave/".source = "${mc-mojave-plasma}/share/plasma/desktoptheme/McMojave/";
       ".local/share/plasma/desktoptheme/McMojave-light/".source = "${mc-mojave-plasma}/share/plasma/desktoptheme/McMojave-light/";
 

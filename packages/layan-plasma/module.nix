@@ -1,4 +1,9 @@
-{ config, pkgs, layan-plasma, ... }: {
+{
+  config,
+  pkgs,
+  layan-plasma,
+  ...
+}: {
   options = {};
   config = {
     home.file = {

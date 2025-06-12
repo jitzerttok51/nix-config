@@ -1,4 +1,9 @@
-{ config, pkgs, mc-sur-plasma, ... }: {
+{
+  config,
+  pkgs,
+  mc-sur-plasma,
+  ...
+}: {
   options = {};
   config = {
     home.file = {

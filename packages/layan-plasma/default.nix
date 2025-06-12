@@ -1,6 +1,11 @@
 # https://nix.dev/tutorials/packaging-existing-software.html
 # Use in flake pkgs.callPackage ./packages/layan-plasma {};
-{ stdenv, fetchFromGitHub, lib }: stdenv.mkDerivation {
+{
+  stdenv,
+  fetchFromGitHub,
+  lib,
+}:
+stdenv.mkDerivation {
   pname = "layan-plasma";
   version = "2025-02-13";
 
