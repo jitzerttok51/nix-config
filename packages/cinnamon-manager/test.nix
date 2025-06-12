@@ -44,6 +44,6 @@ let
 
   panelFunctions = import ./lib;
 in
-  builtins.map panelFunctions.addDefaultsToPanel panels
+  panelFunctions.addDefaults panels
 # in panelFunctions.addIdsToPanels panels
 

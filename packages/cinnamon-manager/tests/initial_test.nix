@@ -46,7 +46,7 @@
 in
   runTests {
     testIsEven_1 = {
-      expr = builtins.map math.addDefaultsToPanel panels;
+      expr = math.addDefaults panels;
       expected = [
         {
           autohide = "false";
@@ -91,6 +91,55 @@ in
             ];
             left = [];
             right = [];
+          };
+        }
+      ];
+    };
+
+    testIsEven_2 = {
+      expr = math.addIdsToPanels panels;
+      expected = [
+        {
+          name = "panel1";
+          id = 1;
+          autohide = "false";
+          height = 36;
+          show-delay = 3000;
+          position = "bottom";
+          applets = {
+            left = [
+              "menu@cinnamon.org"
+              "workspace-switcher@cinnamon.org"
+              "separator@cinnamon.org"
+            ];
+            right = [
+              "systray@cinnamon.org"
+              "xapp-status@cinnamon.org"
+              "notifications@cinnamon.org"
+              "printers@cinnamon.org"
+              "removable-drives@cinnamon.org"
+              "keyboard@cinnamon.org"
+              "favorites@cinnamon.org"
+              "network@cinnamon.org"
+              "sound@cinnamon.org"
+              "power@cinnamon.org"
+              "calendar@cinnamon.org"
+              "cornerbar@cinnamon.org"
+            ];
+          };
+        }
+        {
+          name = "panel2";
+          id = 2;
+          autohide = "false";
+          height = 60;
+          position = "top";
+          applets = {
+            center = [
+              "systray@cinnamon.org"
+              "xapp-status@cinnamon.org"
+              "notifications@cinnamon.org"
+            ];
           };
         }
       ];
