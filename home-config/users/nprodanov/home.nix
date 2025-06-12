@@ -4,7 +4,7 @@
   # TODO: Add support for flatpaks
   imports = [
     ./vscode.nix
-    ./plasma-config
+    # ./plasma-config
     ./shell.nix
     ./git.nix
     ./other.nix
@@ -32,6 +32,9 @@
     kdePackages.kmailtransport
     protonmail-bridge-gui
     protonmail-desktop
+    proton-pass
+    networkmanager_dmenu
+    networkmanagerapplet 
     # caprine
     caprine-bin
     xiphos # TODO: Might use another bible app
@@ -56,6 +59,18 @@
   home.shellAliases = {
     cat = "bat";
     rcat = "cat";
+  };
+
+  programs.ssh.matchBlocks = {
+    "adguard" = {
+      hostname = "192.168.1.10";
+      identityFile = "./pi.key";
+      user = "pi";
+    };
+  };
+
+  home.file.".ssh/pi.key" = {
+    source = ./pi.key;
   };
 
   # TODO: Move in another file for cinnamon

@@ -18,7 +18,7 @@ in {
     hyprshot
     brightnessctl
     nwg-dock-hyprland
-    rofi
+    rofi-wayland
     hyprpolkitagent
   ];
 
@@ -45,6 +45,30 @@ in {
   # TODO: Fix chrome and vscode font rendering
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+  };
+
+  services.kanshi = {
+    enable = true;
+    settings = [
+      { profile.name = "undocked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+          }
+        ];
+      }
+      { profile.name = "docked";
+        profile.outputs = [
+          {
+            criteria = "eDP-1";
+            status = "disable";
+          }
+          {
+            criteria = "DP-3";
+          }
+        ];
+      }
+    ];
   };
 
   home.pointerCursor = {
@@ -83,6 +107,7 @@ in {
       exec-once = [
         # waybar
         secrets-agent
+        "nm-applet"
         # hyprdock
       ];
       xwayland = {
