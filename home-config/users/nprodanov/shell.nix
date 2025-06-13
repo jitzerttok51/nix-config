@@ -24,4 +24,14 @@
     #   ]);
 
   };
+
+  programs.kitty = {
+    enable = true;
+    enableGitIntegration = true;
+    shellIntegration.enableZshIntegration = true;
+    themeFile = "Catppuccin-Macchiato";
+    settings = {
+      background_opacity = 0.75;
+    };
+  };
 }

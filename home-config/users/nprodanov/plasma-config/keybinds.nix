@@ -8,8 +8,8 @@
 
         "services/org.kde.dolphin.desktop" = { _launch = [ "Meta+E" ]; };
         "services/org.kde.krunner.desktop" = { _launch = [ "Meta+R" ]; };
-        "services/org.kde.konsole.desktop" = { _launch = [ "Meta+Q" ]; };
-        "services/chromium-browser.desktop" = { _launch = [ "Meta+F" ]; };
+        "kitty.desktop" = { _launch = [ "Meta+Q" ]; };
+        "brave-browser.desktop" = { _launch = [ "Meta+F" ]; };
 
       plasmashell = {
         "activate task manager entry 1" = "Meta+1";

@@ -17,6 +17,7 @@
                   "applications:systemsettings.desktop"
                   "file://${pkgs.vscode}/share/applications/code.desktop"
                   "applications:brave-browser.desktop"
+                  "applications:kitty.desktop"
                   "applications:Viber.desktop"
                   "applications:slack.desktop"
                   "applications:proton-pass.desktop"

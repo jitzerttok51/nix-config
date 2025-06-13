@@ -22,6 +22,10 @@
         "org.kde.kdecoration2"."ButtonsOnRight" = "IAX";
         "Windows"."BorderlessMaximizedWindows" = true;
       };
+      kdeglobals = {
+        General.TerminalApplication = "kitty";
+        General.TerminalService = "kitty.desktop";
+      };
     };
   };
 }
