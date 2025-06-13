@@ -1,4 +1,6 @@
 { config, pkgs, ...}: {
+      qt.style.name = "kvantum";
+
     programs.plasma = {
 
     workspace = {
@@ -8,10 +10,10 @@
       splashScreen.theme = "Noir-Splash-6";
       theme = "McSur-dark";
       clickItemTo = "select";
-      cursor.theme = "Breeze_Light"; # WinSur-dark-cursors
+      cursor.theme = "layan-cursors-white"; # WinSur-dark-cursors
       iconTheme = "Papirus-Dark";
       wallpaper =
-        "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/";
+        "${pkgs.kdePackages.plasma-workspace-wallpapers}share/wallpapers/MilkyWay/";
     };
 
     configFile = {

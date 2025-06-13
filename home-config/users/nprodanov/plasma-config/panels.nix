@@ -4,9 +4,10 @@
       {
         location = "bottom";
         alignment = "center";
-        height = 64;
+        height = 48;
         lengthMode = "fit";
         hiding = "dodgewindows";
+        screen = "all";
         widgets = [
           {
             name = "org.kde.plasma.icontasks";
@@ -15,6 +16,11 @@
                 launchers = [
                   "applications:systemsettings.desktop"
                   "file://${pkgs.vscode}/share/applications/code.desktop"
+                  "applications:brave-browser.desktop"
+                  "applications:Viber.desktop"
+                  "applications:slack.desktop"
+                  "applications:proton-pass.desktop"
+                  "applications:proton-mail.desktop"
                 ];
               };
             };
@@ -26,6 +32,7 @@
         location = "top";
         height = 26;
         floating = true;
+        screen = "all";
         widgets = [
           {
             name = "org.kde.plasma.kickoff";
@@ -49,12 +56,33 @@
                 widgetElements = "windowTitle";
                 windowTitleFontBold = false;
                 windowTitleMarginsLeft = 20;
+                windowTitleFontSize = 10;
+                windowTitleUndefined = "";
               };
             };
           }
           "org.kde.plasma.appmenu"
           "org.kde.plasma.panelspacer"
-          "org.kde.plasma.systemtray"
+          {
+            systemTray.items = {
+              # We explicitly show bluetooth and battery
+              shown = [
+                "org.kde.plasma.networkmanagement"
+                "org.kde.plasma.volume"
+                "org.kde.plasma.notifications"
+                "org.kde.plasma.keyboardlayout"
+
+              ];
+              # And explicitly hide networkmanagement and volume
+              hidden = [
+                "org.kde.plasma.devicenotifier"
+                "org.kde.plasma.cameraindicator"
+                "org.kde.plasma.keyboardindicator"
+                "org.kde.plasma.clipboard"
+                "Proton"
+              ];
+            };
+          }
           {
             name = "org.kde.windowbuttons";
             config = {
@@ -64,6 +92,12 @@
               };
 
               General = {
+                lengthFirstMargin = 4;
+                lengthLastMargin = 4;
+                inactiveStateEnabled = true;
+                buttonSizePercentage = 50;
+                spacing = 8;
+                useDecorationMetrics = false;
                 buttons = "3|4|5|10|2|9";
                 containmentType = "Plasma";
                 perScreenActive = true;
@@ -76,15 +110,26 @@
             };
           }
           {
-            name = "org.kde.plasma.digitalclock";
-            config = {
-              General = {
-                autoFontAndSize=false;
-                fontFamily="DejaVu Sans";
-                fontStyleName="Condensed";
-                fontWeight=400;
-                showDate=false;
+            digitalClock = {
+              time.format = "24h";
+              font = {
+                family = "DejaVu Sans";
+                style = "Book";
+                weight = 400;
+                size = 10;
               };
+              settings = {
+                General = {
+                  autoFontAndSize=false;
+                  showDate = false;
+                };
+              };
+            };
+          }
+          {
+            panelSpacer = {
+              expanding = false;
+              length = 10;
             };
           }
         ];
