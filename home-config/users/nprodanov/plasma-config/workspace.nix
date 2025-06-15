@@ -24,6 +24,7 @@ in
     kdePackages.plasma-nm
     kdePackages.plasma-pa
     kdePackages.plasma-browser-integration
+    kdePackages.baloo
     layan-cursors
     catppuccin-kde
     (catppuccin-kde.override {     

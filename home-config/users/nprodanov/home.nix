@@ -64,8 +64,8 @@
 
   programs.obsidian = {
     enable = true;
-    defaultSettings.app = {
-
+    defaultSettings.appearance = {
+      nativeMenus = true;
     };
   };
 
