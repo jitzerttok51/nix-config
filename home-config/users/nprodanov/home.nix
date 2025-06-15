@@ -1,10 +1,4 @@
 { config, pkgs, lib, ... }:
-let 
-  kvantum-machiato = (pkgs.catppuccin-kvantum.override {     
-      variant = "macchiato";     
-      accent = "mauve";   
-  });
-in
 {
   # TODO: Add support for flatpaks
   imports = [
@@ -48,14 +42,9 @@ in
     qbittorrent
     libreoffice
     meld
-    kdePackages.kmail
-    kdePackages.kmail-account-wizard
-    kdePackages.kmailtransport
     protonmail-bridge-gui
     protonmail-desktop
     proton-pass
-    networkmanager_dmenu
-    networkmanagerapplet 
     # caprine
     caprine-bin
     xiphos # TODO: Might use another bible app
@@ -69,28 +58,8 @@ in
     slack # TODO: Fix this
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/sl/slack/package.nix
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/release/rpm-build.nix
-    proton-pass
     # dconf-editor # TODO: Add to cinnamon
-    kdePackages.elisa
-    kdePackages.bluedevil
-    kdePackages.bluez-qt
-    kdePackages.kdeconnect-kde
-    redshift-plasma-applet
-    redshift
-    kdePackages.kdeplasma-addons
-    kdePackages.plasma-nm
-    kdePackages.plasma-pa
-    kdePackages.plasma-browser-integration
-    layan-cursors
     vlc
-    catppuccin-kde
-    (catppuccin-kde.override {     
-      flavour = [ "macchiato" ];     
-      accents = [ "mauve" ];   
-    })
-    themechanger
-    
-    kdePackages.qtstyleplugin-kvantum
   ];
 
   programs.obsidian = {
@@ -105,7 +74,6 @@ in
   nixpkgs.overlays = [ 
     # (import ../../../overlays/viber.nix) 
     (import ../../../overlays/layan-cursors.nix) 
-    (import ../../../overlays/kvantummanager.nix) 
   ];
 
   home.shellAliases = {
@@ -123,12 +91,6 @@ in
 
   home.file = {
     ".ssh/pi.key".source = ./pi.key;
-    ".icons/layan-cursors-white/".source = "${pkgs.layan-cursors}/share/icons/layan-cursors-white/";
-    ".config/Kvantum/catppuccin-macchiato-mauve".source = "${kvantum-machiato}/share/Kvantum/catppuccin-macchiato-mauve/";
-  };
-
-  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum-config" {
-    General.theme = "catppuccin-macchiato-mauve";
   };
 
   programs.brave.enable = true;

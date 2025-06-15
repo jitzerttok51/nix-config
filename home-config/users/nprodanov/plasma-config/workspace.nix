@@ -1,5 +1,36 @@
-{ config, pkgs, ...}: {
+{ config, pkgs, ...}: let 
+  variant = "macchiato";     
+  accent = "mauve";   
+  kvantum-machiato = (pkgs.catppuccin-kvantum.override {     
+      inherit variant accent;
+  });
+in
+{
     qt.style.name = "kvantum";
+
+    home.packages = with pkgs; [
+
+    kdePackages.kmail
+    kdePackages.kmail-account-wizard
+    kdePackages.kmailtransport
+
+    kdePackages.elisa
+    kdePackages.bluedevil
+    kdePackages.bluez-qt
+    kdePackages.kdeconnect-kde
+    redshift-plasma-applet
+    redshift
+    kdePackages.kdeplasma-addons
+    kdePackages.plasma-nm
+    kdePackages.plasma-pa
+    kdePackages.plasma-browser-integration
+    layan-cursors
+    catppuccin-kde
+    (catppuccin-kde.override {     
+      flavour = [ variant ];     
+      accents = [ accent ];   
+    })
+  ];
 
     programs.plasma = {
 
@@ -31,5 +62,14 @@
         KDE.widgetStyle = "kvantum-dark";
       };
     };
+  };
+
+  home.file = {
+    ".icons/layan-cursors-white/".source = "${pkgs.layan-cursors}/share/icons/layan-cursors-white/";
+    ".config/Kvantum/catppuccin-${variant}-${accent}".source = "${kvantum-machiato}/share/Kvantum/catppuccin-${variant}-${accent}/";
+  };
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum-config" {
+    General.theme = "catppuccin-${variant}-${accent}";
   };
 }
