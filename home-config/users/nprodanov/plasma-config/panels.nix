@@ -18,6 +18,7 @@
                   "file://${pkgs.vscode}/share/applications/code.desktop"
                   "applications:brave-browser.desktop"
                   "applications:kitty.desktop"
+                  "applications:obsidian.desktop"
                   "applications:Viber.desktop"
                   "applications:slack.desktop"
                   "applications:proton-pass.desktop"
@@ -96,15 +97,15 @@
                 lengthFirstMargin = 4;
                 lengthLastMargin = 4;
                 inactiveStateEnabled = true;
-                buttonSizePercentage = 50;
-                spacing = 8;
+                buttonSizePercentage = 85;
+                spacing = 0;
                 useDecorationMetrics = false;
                 buttons = "3|4|5|10|2|9";
                 containmentType = "Plasma";
                 perScreenActive = true;
                 selectedPlugin = "org.kde.kwin.aurorae";
                 selectedScheme = "${mc-sur-plasma}/share/color-schemes/McSurDark.colors";
-                selectedTheme = "__aurorae__svg__McSur-dark";
+                selectedTheme = "__aurorae__svg__CatppuccinFrappe-Modern";
                 useCurrentDecoration = false;
                 visibility = "ActiveMaximizedWindow";
               };

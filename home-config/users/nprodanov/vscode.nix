@@ -15,14 +15,12 @@
       enableExtensionUpdateCheck = false;
       userSettings = {
         "editor.fontFamily" = "Meslo lg";
-        "workbench.colorTheme" = "Dracula Theme";
-        "window.zoomLevel" = 1; 
+        # "workbench.colorTheme" = "Dracula Theme";
         "window.titleBarStyle" = "native";
       };
 
       extensions = with pkgs.vscode-marketplace; [
         jnoortheen.nix-ide
-        dracula-theme.theme-dracula
         gruntfuggly.todo-tree
       ];
     };

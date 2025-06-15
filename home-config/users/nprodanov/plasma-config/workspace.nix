@@ -1,12 +1,12 @@
 { config, pkgs, ...}: {
-      qt.style.name = "kvantum";
+    qt.style.name = "kvantum";
 
     programs.plasma = {
 
     workspace = {
-      colorScheme = "Layan";
+      colorScheme = "CatppuccinFrappeBlue";
       windowDecorations.library="org.kde.kwin.aurorae";
-      windowDecorations.theme="__aurorae__svg__McSur-dark";
+      windowDecorations.theme="__aurorae__svg__CatppuccinMacchiato-Modern";
       splashScreen.theme = "Noir-Splash-6";
       theme = "McSur-dark";
       clickItemTo = "select";
@@ -17,6 +17,9 @@
     };
 
     configFile = {
+      auroraerc = {
+        "CatppuccinMacchiato-Modern".ButtonSize = 0;
+      };
       kwinrc = {
         "org.kde.kdecoration2"."ButtonsOnLeft" = "";
         "org.kde.kdecoration2"."ButtonsOnRight" = "IAX";
@@ -25,6 +28,7 @@
       kdeglobals = {
         General.TerminalApplication = "kitty";
         General.TerminalService = "kitty.desktop";
+        KDE.widgetStyle = "kvantum-dark";
       };
     };
   };

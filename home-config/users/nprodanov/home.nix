@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }:
-
+let 
+  kvantum-machiato = (pkgs.catppuccin-kvantum.override {     
+      variant = "macchiato";     
+      accent = "mauve";   
+  });
+in
 {
   # TODO: Add support for flatpaks
   imports = [
@@ -10,6 +15,22 @@
     ./other.nix
     # ./hyprland
   ];
+
+  catppuccin.flavor = "macchiato";
+  catppuccin.vscode = {
+    enable = true;
+    accent = "mauve";
+    settings = {
+      boldKeywords = true;
+      italicComments = true;
+      italicKeywords = true;
+      colorOverrides = {};
+      customUIColors = {};
+      workbenchMode = "default";
+      bracketMode = "rainbow";
+      extraBordersEnabled = false;
+    };
+  };
 
   programs.home-manager.enable = true;
 
@@ -62,13 +83,29 @@
     kdePackages.plasma-browser-integration
     layan-cursors
     vlc
+    catppuccin-kde
+    (catppuccin-kde.override {     
+      flavour = [ "macchiato" ];     
+      accents = [ "mauve" ];   
+    })
+    themechanger
+    
+    kdePackages.qtstyleplugin-kvantum
   ];
+
+  programs.obsidian = {
+    enable = true;
+    defaultSettings.app = {
+
+    };
+  };
 
   home.sessionVariables = { EDITOR = "vim"; };
 
   nixpkgs.overlays = [ 
     # (import ../../../overlays/viber.nix) 
     (import ../../../overlays/layan-cursors.nix) 
+    (import ../../../overlays/kvantummanager.nix) 
   ];
 
   home.shellAliases = {
@@ -87,6 +124,11 @@
   home.file = {
     ".ssh/pi.key".source = ./pi.key;
     ".icons/layan-cursors-white/".source = "${pkgs.layan-cursors}/share/icons/layan-cursors-white/";
+    ".config/Kvantum/catppuccin-macchiato-mauve".source = "${kvantum-machiato}/share/Kvantum/catppuccin-macchiato-mauve/";
+  };
+
+  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum-config" {
+    General.theme = "catppuccin-macchiato-mauve";
   };
 
   programs.brave.enable = true;

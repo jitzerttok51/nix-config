@@ -15,6 +15,7 @@
       inputs.home-manager.follows = "home-manager";
     };
     custom-packages.url = "./packages";
+    catppuccin.url = "github:catppuccin/nix";
   };
 
   outputs = { 
@@ -22,6 +23,7 @@
     nixpkgs,
     hyprland, 
     home-manager,
+    catppuccin,
     nix-vscode-extensions,
     plasma-manager,
     custom-packages,
@@ -69,6 +71,7 @@
       };
 
       modules = [
+        catppuccin.homeModules.catppuccin
         custom-packages.homeManagerModules.mc-mojave-plasma
         custom-packages.homeManagerModules.mc-sur-plasma
         custom-packages.homeManagerModules.layan-plasma
