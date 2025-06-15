@@ -29,6 +29,8 @@
                   "file://${pkgs.vscode}/share/applications/code.desktop"
                   "applications:brave-browser.desktop"
                   "applications:kitty.desktop"
+                  "applications:idea-community.desktop"
+                  "applications:Eclipse.desktop"
                   "applications:obsidian.desktop"
                   "file://${custom-packages.viber}/share/applications/viber.desktop"
                   "applications:slack.desktop"
