@@ -3,9 +3,9 @@
     configFile = {
       "kxkbrc".Layout = {
           DisplayNames= "";
-          LayoutList = "us,bg";
+          LayoutList = "bg,us";
           Use = true;
-          VariantList = ",phonetic";
+          VariantList = "phonetic,";
       };
     };
     shortcuts = {

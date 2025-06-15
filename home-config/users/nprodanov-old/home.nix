@@ -3,10 +3,28 @@
   # TODO: Add support for flatpaks
   imports = [
     ./vscode.nix
+    ./plasma-config
     ./shell.nix
     ./git.nix
     ./other.nix
+    # ./hyprland
   ];
+
+  catppuccin.flavor = "macchiato";
+  catppuccin.vscode = {
+    enable = true;
+    accent = "mauve";
+    settings = {
+      boldKeywords = true;
+      italicComments = true;
+      italicKeywords = true;
+      colorOverrides = {};
+      customUIColors = {};
+      workbenchMode = "default";
+      bracketMode = "rainbow";
+      extraBordersEnabled = false;
+    };
+  };
 
   programs.home-manager.enable = true;
 
@@ -20,6 +38,7 @@
     eclipses.eclipse-jee
     vscode
     yt-dlp
+    nixfmt
     qbittorrent
     libreoffice
     meld
@@ -51,6 +70,11 @@
   };
 
   home.sessionVariables = { EDITOR = "vim"; };
+
+  nixpkgs.overlays = [ 
+    # (import ../../../overlays/viber.nix) 
+    (import ../../../overlays/layan-cursors.nix) 
+  ];
 
   home.shellAliases = {
     cat = "bat";

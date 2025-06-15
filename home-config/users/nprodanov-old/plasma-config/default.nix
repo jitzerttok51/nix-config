@@ -10,6 +10,7 @@
     };
 
     imports = [
+      ./misc.nix
       ./panels.nix
       ./workspace.nix
       ./keyboard.nix

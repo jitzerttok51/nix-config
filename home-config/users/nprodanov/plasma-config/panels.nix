@@ -4,11 +4,22 @@
       {
         location = "bottom";
         alignment = "center";
-        height = 48;
-        lengthMode = "fit";
-        hiding = "dodgewindows";
+        height = 44;
+        lengthMode = "fill";
+        floating = true;
+        hiding = "none";
         screen = "all";
         widgets = [
+          {
+            name = "org.kde.plasma.kickoff";
+            config = {
+              General = {
+                icon = "nix-snowflake-white";
+                alphaSort = true;
+              };
+            };
+          }
+          "org.kde.plasma.pager"
           {
             name = "org.kde.plasma.icontasks";
             config = {
@@ -27,44 +38,7 @@
               };
             };
           }
-        ];
-      }
-      # Global menu at the top
-      {
-        location = "top";
-        height = 26;
-        floating = true;
-        screen = "all";
-        widgets = [
-          {
-            name = "org.kde.plasma.kickoff";
-            config = {
-              General = {
-                icon = "nix-snowflake-white";
-                alphaSort = true;
-              };
-            };
-          }
-          {
-            name = "com.github.antroids.application-title-bar";
-            config = {
-              ConfigDialog = {
-                DialogHeight = 540;
-                DialogWidth = 720;
-              };
-              Appearance = {
-                widgetButtonsAuroraeTheme = "McSur-light";
-                widgetButtonsIconsTheme = "Oxygen";
-                widgetElements = "windowTitle";
-                windowTitleFontBold = false;
-                windowTitleMarginsLeft = 20;
-                windowTitleFontSize = 10;
-                windowTitleUndefined = "";
-              };
-            };
-          }
-          "org.kde.plasma.appmenu"
-          "org.kde.plasma.panelspacer"
+          "org.kde.plasma.marginsseparator"
           {
             systemTray.items = {
               # We explicitly show bluetooth and battery
@@ -86,54 +60,11 @@
             };
           }
           {
-            name = "org.kde.windowbuttons";
-            config = {
-              ConfigDialog = {
-                DialogHeight = 540;
-                DialogWidth = 720;
-              };
-
-              General = {
-                lengthFirstMargin = 4;
-                lengthLastMargin = 4;
-                inactiveStateEnabled = true;
-                buttonSizePercentage = 85;
-                spacing = 0;
-                useDecorationMetrics = false;
-                buttons = "3|4|5|10|2|9";
-                containmentType = "Plasma";
-                perScreenActive = true;
-                selectedPlugin = "org.kde.kwin.aurorae";
-                selectedScheme = "${mc-sur-plasma}/share/color-schemes/McSurDark.colors";
-                selectedTheme = "__aurorae__svg__CatppuccinFrappe-Modern";
-                useCurrentDecoration = false;
-                visibility = "ActiveMaximizedWindow";
-              };
-            };
-          }
-          {
             digitalClock = {
               time.format = "24h";
-              font = {
-                family = "DejaVu Sans";
-                style = "Book";
-                weight = 400;
-                size = 10;
-              };
-              settings = {
-                General = {
-                  autoFontAndSize=false;
-                  showDate = false;
-                };
-              };
             };
           }
-          {
-            panelSpacer = {
-              expanding = false;
-              length = 10;
-            };
-          }
+          "org.kde.plasma.showdesktop"
         ];
       }
     ];
