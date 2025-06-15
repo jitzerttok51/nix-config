@@ -14,5 +14,6 @@
       ./workspace.nix
       ./keyboard.nix
       ./keybinds.nix
+      ./misc.nix
     ];
 }

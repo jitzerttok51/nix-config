@@ -5,6 +5,7 @@
       ./hardware-configuration.nix
       ../../modules/users/nprodanov.nix
       ../../modules/desktops/plasma6.nix
+      # ../../modules/desktops/gnome.nix
       # ../../modules/desktops/cinnamon.nix
   ];
 

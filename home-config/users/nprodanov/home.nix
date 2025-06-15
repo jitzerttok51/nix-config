@@ -6,6 +6,7 @@
     ./shell.nix
     ./git.nix
     ./other.nix
+    ./plasma-config
   ];
 
   programs.home-manager.enable = true;
@@ -27,15 +28,15 @@
     protonmail-desktop
     proton-pass
     # caprine
-    caprine-bin
+    # caprine-bin
     xiphos # TODO: Might use another bible app
-    mpv
+    # mpv
     # chromium
-    # obsidian
+    obsidian
     thunderbird
     zulu17
     neofetch
-    bat
+    # bat
     slack # TODO: Fix this
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/sl/slack/package.nix
     # https://github.com/NixOS/nixpkgs/blob/master/pkgs/build-support/release/rpm-build.nix

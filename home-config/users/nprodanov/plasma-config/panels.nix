@@ -1,4 +1,4 @@
-{ config, pkgs, mc-sur-plasma, ...}: {
+{ config, pkgs, mc-sur-plasma, custom-packages, ...}: {
     programs.plasma = {
     panels = [
       {
@@ -30,7 +30,7 @@
                   "applications:brave-browser.desktop"
                   "applications:kitty.desktop"
                   "applications:obsidian.desktop"
-                  "applications:Viber.desktop"
+                  "file://${custom-packages.viber}/share/applications/viber.desktop"
                   "applications:slack.desktop"
                   "applications:proton-pass.desktop"
                   "applications:proton-mail.desktop"
