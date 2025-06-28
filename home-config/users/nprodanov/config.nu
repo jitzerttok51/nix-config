@@ -1,3 +1,5 @@
+$env.EDITOR = "vim"
+
 alias g = git
 alias ga = git add
 alias gaa = git add --all
