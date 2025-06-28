@@ -50,15 +50,6 @@
     git-lfs
   ];
 
-  services.pipewire.enable = true;
-
-  services.squeezelite = {
-    enable = true;
-    extraArguments = ''
-      -s home-assistant.lan -n "Linux Player" -o pipewire
-    '';
-  };
-
 #  services.openssh = {
 #    enable = true;
 #    settings = {
