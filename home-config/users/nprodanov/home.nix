@@ -3,7 +3,7 @@
   # TODO: Add support for flatpaks
   imports = [
     ./vscode.nix
-    ./shell.nix
+    ./nushell.nix
     ./git.nix
     ./other.nix
     ./plasma-config
@@ -70,7 +70,7 @@
     ".ssh/pi.key".source = ./pi.key;
   };
 
-  programs.brave .enable = true;
+  programs.brave.enable = true;
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release

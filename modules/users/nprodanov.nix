@@ -10,6 +10,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHciq66oygoT3sgZOx5dA7nNK9JgpTqSRiDqVrukz6wQ azuread\\nikolayprodanov@IBM-PW09W916"
     ];
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
+    shell = pkgs.nushell;
   };
 }
