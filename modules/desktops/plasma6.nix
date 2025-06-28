@@ -20,5 +20,6 @@
     kdePackages.plasma-pa
     kdePackages.plasma-browser-integration
     kdePackages.baloo
+    kdePackages.kio-extras
   ];
 }
