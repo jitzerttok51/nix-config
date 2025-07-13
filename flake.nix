@@ -64,6 +64,7 @@
           home-manager 
           hyprland
           plasma-manager;
+          zen-browser  = custom-packages.packages.${system}.zen-browser;
           custom-packages = custom-packages.packages.${system};
           layan-plasma = custom-packages.packages.${system}.layan-plasma;
           mc-sur-plasma = custom-packages.packages.${system}.mc-sur-plasma;

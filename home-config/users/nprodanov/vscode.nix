@@ -22,6 +22,8 @@
       extensions = with pkgs.vscode-marketplace; [
         jnoortheen.nix-ide
         gruntfuggly.todo-tree
+        ms-python.python
+        ms-python.debugpy
       ];
     };
   };

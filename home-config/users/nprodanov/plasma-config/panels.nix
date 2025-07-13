@@ -1,4 +1,4 @@
-{ config, pkgs, mc-sur-plasma, custom-packages, ...}: {
+{ config, pkgs, mc-sur-plasma, custom-packages, zen-browser, ...}: {
     programs.plasma = {
     panels = [
       {
@@ -27,7 +27,7 @@
                 launchers = [
                   "applications:systemsettings.desktop"
                   "file://${pkgs.vscode}/share/applications/code.desktop"
-                  "applications:brave-browser.desktop"
+                  "applications:zen.desktop"
                   "applications:kitty.desktop"
                   "applications:idea-community.desktop"
                   "applications:Eclipse.desktop"

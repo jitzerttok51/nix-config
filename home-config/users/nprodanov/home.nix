@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, zen-browser, ... }:
 {
   # TODO: Add support for flatpaks
   imports = [
@@ -21,6 +21,7 @@
     eclipses.eclipse-jee
     vscode
     yt-dlp
+    zen-browser
     qbittorrent
     libreoffice
     meld
@@ -34,7 +35,7 @@
     # chromium
     obsidian
     thunderbird
-    zulu17
+    zulu21
     neofetch
     # bat
     slack # TODO: Fix this
@@ -68,6 +69,7 @@
 
   home.file = {
     ".ssh/pi.key".source = ./pi.key;
+    ".jdks/zulu-21".source = pkgs.zulu21;
   };
 
   programs.brave.enable = true;

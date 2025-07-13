@@ -20,6 +20,7 @@
       layan-plasma = pkgs.callPackage ./layan-plasma {};
       mc-mojave-plasma = pkgs.callPackage ./mc-mojave-plasma {};
       mc-sur-plasma = pkgs.callPackage ./mc-sur-plasma {};
+      zen-browser = pkgs.callPackage ./zen-browser {};
       viber = pkgs.callPackage ./viber {};
     };
     homeManagerModules = {

@@ -34,6 +34,7 @@
   networking.networkmanager.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  programs.nix-ld.enable = true;
 
   environment.systemPackages = with pkgs; [
     vim
@@ -48,6 +49,8 @@
     dnslookup
     libsecret
     git-lfs
+    anydesk
+    python314
   ];
 
 #  services.openssh = {
